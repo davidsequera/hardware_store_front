@@ -1,0 +1,51 @@
+.SignInComponent_container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.SignInComponent_form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2vh;
+    /* border: 2px solid var(--color-B); */
+    box-shadow: 0 2px 5px 1px rgba(64,60,67,.16);
+    background-color: var(--color-A);
+    border-radius: 1rem;
+    margin: 2vh  15px 0 15px ;
+}
+.SignInComponent_User-logo{
+    /* width: 45px; */
+    width: 15vh;
+    object-fit: cover;
+    color: var(--color-B);
+    margin: 0.5em;
+    flex-shrink: 0;
+}
+.SignInComponent_SingUp{
+    margin: 15px 0 15px 0;
+    transition: color ease 500ms;
+}
+.SignInComponent_SingUp:hover{
+    color: var(--color-B);
+}
+
+#SignInComponent_button{
+    border-radius: 16rem;
+    margin: 1rem 0 1rem 0;
+    width: 60vw;
+    height: 12vh;
+}
+
+
+@media screen and (min-width: 768px){
+    #SignInComponent_button{
+        width: 25vw;
+        height: 10vh;
+    }
+    .SignInComponent_User-logo{
+        width: 10vw;
+    }
+}

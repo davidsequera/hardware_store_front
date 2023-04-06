@@ -1,0 +1,53 @@
+.Menu{
+    display: flex;
+    z-index: 1;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 2vh 0 2vh 5.5vh;
+    right: 8%;
+    top: 10%;
+    position: fixed;
+    background-color: rgba(var(--raw-C3),0.85);
+    background-color: rgba(0, 58, 116, 0.85);
+    border-radius: 1rem;
+    width: 75vw;
+    height: 72vh;
+    transition: 1100ms;
+    backdrop-filter: blur(0.2rem);
+    -webkit-backdrop-filter: blur(00.2rem);
+}
+
+.Menu:active{
+    background-color: var(--color-A);
+}
+
+
+@media screen and (min-width: 425px){
+    .Menu{
+        right: 16%;
+        width: 60vw;
+        height: 80vh;
+    }
+
+}
+
+@media screen and (min-width: 768px){
+    .Menu{
+        padding: 2vh ;
+        width: 17vw;
+        height: initial;
+        position: absolute;
+        background-color: var(--color-A);
+
+        align-items: initial;
+        right: 4%;
+        top: 7%;
+        box-shadow: 0 2px 5px 1px rgba(64,60,67,.16);
+    }
+}
+@media screen and (min-width: 1024px){
+    .Menu{
+        width: 11vw;
+        top: 6.5%;
+    }
+}
