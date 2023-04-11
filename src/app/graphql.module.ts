@@ -11,7 +11,7 @@ urisMap.set('auth', 'http://localhost:8090')
 // const httpLinkMap = new Map<string, HttpLink>()
 // urisMap.forEach((uri, key) => { httpLinkMap.set(key, new HttpLink({uri})) })
 
-const uri = 'http://localhost:8090'; // <-- add the URL of the GraphQL server here
+const uri = 'http://localhost:8090/graphql'; // <-- add the URL of the GraphQL server here
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
   return {
     link: httpLink.create({uri}),

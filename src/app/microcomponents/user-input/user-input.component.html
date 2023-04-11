@@ -1,4 +1,6 @@
-<div class="UserInput_item" [id]="id">
-    <label>{{ title }}</label>
-    <input type="{{ type }}" [(ngModel)]="name" />
+<div class="UserInput_item" [id]="id" [formGroup]="parentFormGroup">
+    <label >{{ title }}</label>
+    <input type="{{ type }}" [name]="name" [formControlName]="name"  />
 </div>
+
+<!-- Event  -->

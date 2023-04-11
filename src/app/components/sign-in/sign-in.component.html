@@ -1,8 +1,9 @@
 <div class="SignInComponent_container" id="Form">
-    <form class="SignInComponent_form" (ngSubmit)="onSubmit()">
+    <form class="SignInComponent_form" [formGroup]="signInForm" (ngSubmit)="onSubmit()">
+      Value: {{ signInForm.value | json }}
       <img alt="logo PMP" src="{{ logo }}" class="SignInComponent_User-logo" />
-      <app-user-input id="2" title="Email" type="email" [name]="email"></app-user-input>
-      <app-user-input id="34" title="Contraseña" type="password" [name]="password"></app-user-input>
+      <app-user-input id="user_input_user" title="Email" type="email" name="email" [parentFormGroup]="signInForm"> </app-user-input>
+      <app-user-input id="user_input_password" title="Contraseña" type="password" name="password" [parentFormGroup]="signInForm"></app-user-input>
       <button class="button" id="SignInComponent_button" [disabled]="!validateForm()">SIGN IN</button>
       <app-error-banner *ngIf="error"></app-error-banner>
     </form>

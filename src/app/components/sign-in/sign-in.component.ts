@@ -14,11 +14,11 @@ import { AUTHENTICATE } from 'src/app/graphql/graphql.auth.queries';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
-  signInForm: FormGroup;
+  signInForm!: FormGroup;
   errorMessage: string | null = null;
   logo: string = '../../assets/logo/512logoCir.png';
   //TODO: Change this to false
-  error: boolean = false;
+  error: any;
   email: string = '';
   password: string = '';
   
@@ -26,9 +26,8 @@ export class SignInComponent implements OnInit {
               private router: Router, 
               private userContextService: UserContextService,
               private cookiesService: CookieService,
-              private fb: FormBuilder) {
-                this.signInForm = this.fb.group({})
-              }
+              private fb: FormBuilder,
+              ) {}
 
   ngOnInit(): void {
     this.signInForm = this.fb.group({
@@ -44,11 +43,11 @@ export class SignInComponent implements OnInit {
 
   onSubmit(): void {
     const email = this.signInForm.value.email;
-    const password = this.signInForm.value.password;
+    const password = this.signInForm.value.password;  
 
     this.apollo.mutate({
       mutation: AUTHENTICATE,
-      variables: { type: { email, password } }
+      variables: { credential: { email, password } }
     })
     .pipe(
       catchError((err) => {
@@ -58,9 +57,10 @@ export class SignInComponent implements OnInit {
       })
     )
     .subscribe(({data}: any) => {
-      if(data.signIn.auth){
+      console.log('Match', data);
+      if(data.authenticate.type === 'REFRESH'){
         this.apollo.client.resetStore();
-        const token = data.signIn.body;
+        const token: string = data.authenticate.value;
         this.cookiesService.delete('token');
         this.cookiesService.set('token', token);
         this.userContextService.setJWT(this.cookiesService.get('token'));
@@ -70,4 +70,75 @@ export class SignInComponent implements OnInit {
       }
     });
   }
+
+
+
+/// TEMPORAL
+
+
+  // todos: any[] = [];
+  // error: any;
+
+  // todoForm = new FormGroup({
+  //   name: new FormControl('', Validators.required),
+  //   description: new FormControl('', Validators.required)
+  // });
+
+  // addTodo() {
+  //   // apollo graphql query to add todo
+  //   this.apollo.mutate({
+  //     mutation: ADD_TODO,
+  //     variables: {
+  //       name: this.todoForm.value.name,
+  //       description: this.todoForm.value.description,
+  //     },
+  //     refetchQueries: [{
+  //       query: GET_TODOS
+  //     }]
+  //   }).subscribe(({data}: any) => {
+  //     this.todos = data.addTodo;
+  //     this.todoForm.reset();
+  //   }
+  //   , (error) => {
+  //     this.error = error;
+  //   }
+  //   );
+
+  // }
+
+  // deleteTodo(id: string) {
+  //   // apollo graphql query to delete todo
+  //   this.apollo.mutate({
+  //     mutation: DELETE_TODO,
+  //     variables: {
+  //       id: id,
+  //     },
+  //     refetchQueries: [{
+  //       query: GET_TODOS
+  //     }]
+  //   }).subscribe(({data}: any) => {
+  //     this.todos = data.deleteTodo;
+  //   }
+  //   , (error) => {
+  //     this.error = error;
+  //   }
+  //   );
+  // }
+
+
+  // ngOnInit(): void {
+  //   this.apollo.watchQuery({
+  //     query: GET_TODOS
+  //   }).valueChanges.subscribe(({ data, error }: any) => {
+  //     this.todos = data.todos;
+  //     this.error = error;
+  // }
+  // );
+  // }
+
+
+
+
+
 }
+

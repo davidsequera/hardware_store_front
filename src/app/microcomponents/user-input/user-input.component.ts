@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-user-input',
@@ -10,6 +11,7 @@ export class UserInputComponent {
   @Input() title: string;
   @Input() type: string;
   @Input() name: string;
+  @Input() parentFormGroup!: FormGroup;
 
   constructor(){
     this.name = '';
