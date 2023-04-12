@@ -6,6 +6,7 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./tool-item.component.css']
 })
 export class ToolItemComponent {
-  @Input() title: string | undefined;
-  @Input() link: string | undefined;
+  @Input() title?: string ;
+  @Input() description?: string ;
+  @Input() link?: string ;
 }
