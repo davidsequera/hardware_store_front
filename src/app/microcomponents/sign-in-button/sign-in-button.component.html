@@ -1,0 +1,9 @@
+<div [ngClass]="{'hidden': pathname === '/login', 'SignInButton-container': pathname != '/login'}">
+    <ng-container *ngIf="isMobile; else signInButton">
+      <mat-icon role="button" (click)="toSignIn()" class="account-button" fontIcon="logout"></mat-icon>
+    </ng-container>
+    <ng-template #signInButton>
+      <button class="SignIn" (click)="toSignIn()">SignIn</button>
+    </ng-template>
+  </div>
+  

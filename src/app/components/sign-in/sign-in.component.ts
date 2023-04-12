@@ -48,27 +48,25 @@ export class SignInComponent implements OnInit {
     this.apollo.mutate({
       mutation: AUTHENTICATE,
       variables: { credential: { email, password } }
-    })
-    .pipe(
-      catchError((err) => {
-        console.log('Not match', err);
-        this.errorMessage = 'El correo electrónico o la contraseña ingresados no son válidos.';
-        return throwError(err);
-      })
-    )
-    .subscribe(({data}: any) => {
-      console.log('Match', data);
-      if(data.authenticate.type === 'REFRESH'){
-        this.apollo.client.resetStore();
-        const token: string = data.authenticate.value;
-        this.cookiesService.delete('token');
-        this.cookiesService.set('token', token);
-        this.userContextService.setJWT(this.cookiesService.get('token'));
-        this.router.navigate(['/dashboard']);
-      } else {
-        this.errorMessage = 'El correo electrónico o la contraseña ingresados no son válidos.';
+    }).subscribe({
+      next: ({ data }: any) => {
+        console.log('Match', data);
+        if(data.authenticate.type === 'REFRESH'){
+          this.apollo.client.resetStore();
+          const token: string = data.authenticate.value;
+          this.cookiesService.delete('token');
+          this.cookiesService.set('token', token);
+          this.userContextService.setJWT(this.cookiesService.get('token'));
+          this.router.navigate(['/dashboard']);
+        } else {
+          this.errorMessage = 'El correo electrónico o la contraseña ingresados no son válidos.';
+        }
+      },
+      error: (error) => {
+        console.log('There was an error sending the query', error);
+        this.error = error;
       }
-    });
+    })
   }
 
 

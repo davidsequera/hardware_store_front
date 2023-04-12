@@ -36,6 +36,7 @@
 	color: var(--color-B);
 } */
 .header-log{
+	display: flex;
 	width: none;
 }
 

@@ -28,6 +28,11 @@ export class UserContextService {
     // this.client?.resetStore();
     this.cookieService.delete('token');
     this.jwtSubject.next(null);
-    this.router.navigate(['/signin']);
+    this.router.navigate(['/login']);
+  }
+
+  logout(): void {
+    this.clearJWT();
+    this.router.navigate(['/login']);
   }
 }

@@ -22,6 +22,10 @@ import { MenuItemComponent } from './microcomponents/menu-item/menu-item.compone
 import { UsersComponent } from './pages/users/users.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import {MatIconModule} from '@angular/material/icon';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { AccountButtonComponent } from './microcomponents/account-button/account-button.component';
+import { SignInButtonComponent } from './microcomponents/sign-in-button/sign-in-button.component';
 
 
 
@@ -42,7 +46,11 @@ import {MatIconModule} from '@angular/material/icon';
     FooterComponent,
     MenuComponent,
     MenuItemComponent,
-    UsersComponent
+    UsersComponent,
+    NotFoundComponent,
+    SignUpComponent,
+    AccountButtonComponent,
+    SignInButtonComponent
   ],
   imports: [
     BrowserModule,

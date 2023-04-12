@@ -10,9 +10,9 @@ export class HeaderComponent implements OnInit {
   jwt: string | null = null;
 
   constructor(private userContext: UserContextService) {
-    userContext.jwt$.subscribe(jwt => this.jwt = jwt);
   }
-
+  
   ngOnInit(): void {
+    this.userContext.jwt$.subscribe(jwt => this.jwt = jwt);
   }
 }

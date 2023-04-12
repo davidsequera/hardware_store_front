@@ -129,12 +129,17 @@ button {
 }
 .button {
   cursor: pointer;
-  background-color: var(--color-B4);
+  background-color: var(--color-B3);
   color: var(--color-A);
   font-size: 2em;
   font-weight: bold;
-  border: 5px solid var(--color-B);
+  border: 5px solid inherit;
+  transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.3s all;
 }
+.button:hover {
+  background-color: var(--color-B);
+}
+
 .button:active {
   background-color: var(--color-B);
 }

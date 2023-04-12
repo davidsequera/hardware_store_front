@@ -1,0 +1,53 @@
+.AccountButton-main{
+    display: flex;
+}
+.account-button{
+    height: 2rem;
+    width: 2rem;
+    border-radius: 50%;
+    padding: 0.3rem;
+    background-color: var(--color-B);
+    color: var(--color-A);
+    text-align: center;
+    z-index: 1000;
+    cursor: pointer;
+
+    /* font-size: 16px; */
+    position: fixed;
+    top: 1vh;
+    left: 1.2vw;
+    transition: 200ms;
+}
+
+.account-button:active{
+    background-color: var(--color-A);
+}
+@media screen and (min-width: 768px){
+    .account-button {
+        height: 2rem;
+        width: 2rem;
+        opacity: 0.8;
+        padding: 0%;
+        background-color: transparent;
+        color: var(--color-A);
+        /* font-size: 16px; */
+        position: initial;
+        top: 0;
+        left: 0;
+    }
+    
+    .account-button:hover {
+        opacity: 1;
+    }
+    .burger-button {
+        display: block;
+        z-index: 1000;
+    }
+    .burger-button:hover {
+        transition: 500ms;
+        width: 45px;
+        height: 45px;
+        /* font-size: 25px; */
+        line-height: 2em;
+    }
+}

@@ -5,15 +5,16 @@ import { ToolsComponent } from './pages/tools/tools.component';
 import { UsersComponent } from './pages/users/users.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 
 const routes: Routes = [
-  // { path: '', component: HomeComponent },
+  { path: '', component: HomeComponent },
   { path: 'tools', component: ToolsComponent },
   { path: 'users', component: UsersComponent },
-  { path: '', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'singup', component: SignupComponent },
-  { path: '**', component: ToolsComponent },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({
