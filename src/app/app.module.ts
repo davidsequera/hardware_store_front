@@ -22,10 +22,12 @@ import { MenuItemComponent } from './microcomponents/menu-item/menu-item.compone
 import { UsersComponent } from './pages/users/users.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import {MatIconModule} from '@angular/material/icon';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { AccountButtonComponent } from './microcomponents/account-button/account-button.component';
 import { SignInButtonComponent } from './microcomponents/sign-in-button/sign-in-button.component';
+import { ToolFilterComponent } from './components/tool-filter/tool-filter.component';
 
 
 
@@ -50,7 +52,8 @@ import { SignInButtonComponent } from './microcomponents/sign-in-button/sign-in-
     NotFoundComponent,
     SignUpComponent,
     AccountButtonComponent,
-    SignInButtonComponent
+    SignInButtonComponent,
+    ToolFilterComponent
   ],
   imports: [
     BrowserModule,
@@ -59,6 +62,7 @@ import { SignInButtonComponent } from './microcomponents/sign-in-button/sign-in-
     ReactiveFormsModule,
     GraphQLModule,
     MatIconModule,
+    MatCheckboxModule,
     HttpClientModule
   ],
   providers: [UserContextService],

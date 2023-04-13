@@ -1,5 +1,8 @@
-<div>
-    <div *ngFor="let tool of tools">
-        <app-tool-item [title]="tool.name"  [description]="tool.description"   [link]="tool.link" ></app-tool-item>
-    </div>
+<div class="ToolsLayout">
+    <app-tool-filter [brands]="brands"></app-tool-filter>
+    <ul>
+        <li class="ToolList" *ngFor="let tool of tools">
+            <app-tool-item  [ngClass]="{'hidden': !userContext.brandsChecked[tool.brand] == true}" [title]="tool.name"  [description]="tool.description"   [link]="tool.link" ></app-tool-item>
+        </li>
+    </ul>
 </div>

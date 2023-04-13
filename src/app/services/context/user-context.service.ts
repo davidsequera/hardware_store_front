@@ -12,6 +12,10 @@ export class UserContextService {
   private jwtSubject = new BehaviorSubject<string | null>(this.cookieService.get('token'));
   jwt$ = this.jwtSubject.asObservable();
 
+  brandsChecked: {[key: string]: any} = {};
+
+
+
   constructor(private router: Router, private cookieService: CookieService) {
   }
 
