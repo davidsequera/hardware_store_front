@@ -28,6 +28,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { AccountButtonComponent } from './microcomponents/account-button/account-button.component';
 import { SignInButtonComponent } from './microcomponents/sign-in-button/sign-in-button.component';
 import { ToolFilterComponent } from './components/tool-filter/tool-filter.component';
+import {CurvedElementComponent} from "./microcomponents/tool-element/curved-element.component";
 
 
 
@@ -53,7 +54,9 @@ import { ToolFilterComponent } from './components/tool-filter/tool-filter.compon
     SignUpComponent,
     AccountButtonComponent,
     SignInButtonComponent,
-    ToolFilterComponent
+    ToolFilterComponent,
+    CurvedElementComponent,
+    CurvedElementComponent
   ],
   imports: [
     BrowserModule,
