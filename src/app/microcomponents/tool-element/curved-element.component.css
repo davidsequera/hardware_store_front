@@ -1,0 +1,63 @@
+.curved-element {
+  background-color: #0D0E0F;
+  border-radius: 1.7vh;
+  padding: 0 0.35em;
+  width: 25.6vh;
+  height: 33vh;
+  font-family: 'Forma DJR Display', sans-serif;
+  position: relative;
+}
+
+.object-image {
+  width: 30vh;
+  height: 30vh;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.title-wrapper {
+  position: absolute;
+  bottom: 6vh;
+  text-align: left;
+}
+
+.title {
+  color: #F2F2F2;
+  font-size: 1.8em;
+  font-weight: 700;
+  font-style: italic;
+  margin-left: 0.6em;
+}
+
+.subtitle {
+  color: rgba(242, 242, 242, 0.61);
+  font-size: 1em;
+  font-weight: 400;
+  margin: 0;
+  margin-left: 1em;
+  margin-bottom: 0.6em;
+}
+
+.ios-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0.7em 1em;
+  gap: 0.5em;
+  border-radius: 0.7em;
+  background-color: rgba(242, 242, 242, 0.17);
+  text-align: center;
+  vertical-align: middle;
+  font-size: 0.85em;
+  font-family: 'SF Pro Text', sans-serif;
+  letter-spacing: -0.02em;
+  line-height: 1.3em;
+  color: #ffffff;
+  text-decoration: none;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 2vh;
+  margin-left: 1vh;
+}
