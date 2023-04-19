@@ -7,18 +7,20 @@ import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 
-
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'tools', component: ToolsComponent },
-  { path: 'users', component: UsersComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'singup', component: SignupComponent },
-  { path: '**', component: NotFoundComponent },
+  { path: '', component: HomeComponent }, // ruta raíz, redirige a HomeComponent
+  { path: 'tools', component: ToolsComponent }, // ruta a la página de herramientas
+  { path: 'users', component: UsersComponent }, // ruta a la página de usuarios
+  { path: 'login', component: LoginComponent }, // ruta a la página de inicio de sesión
+  { path: 'singup', component: SignupComponent }, // ruta a la página de registro
+  { path: '**', component: NotFoundComponent }, // ruta para cualquier otra URL no reconocida
 ];
 
+/**
+ * Módulo de enrutamiento para la aplicación Angular
+ */
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes)], // importa el módulo de rutas de Angular y registra las rutas definidas
+  exports: [RouterModule] // exporta el módulo de rutas para que pueda ser utilizado en otros módulos
 })
 export class AppRoutingModule { }

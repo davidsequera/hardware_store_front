@@ -11,8 +11,12 @@ export class HeaderComponent implements OnInit {
 
   constructor(private userContext: UserContextService) {
   }
-  
+
   ngOnInit(): void {
+    /**
+     * Subscripción a un observable que emite el token JWT del usuario actual.
+     *
+     */
     this.userContext.jwt$.subscribe(jwt => this.jwt = jwt);
   }
 }

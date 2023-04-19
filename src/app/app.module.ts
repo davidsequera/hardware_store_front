@@ -31,45 +31,50 @@ import { ToolFilterComponent } from './components/tool-filter/tool-filter.compon
 import {CurvedElementComponent} from "./microcomponents/tool-element/curved-element.component";
 
 
-
+/**
+ * Módulo de la aplicación Angular que declara los componentes, servicios y otros módulos utilizados en la aplicación
+ */
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
-    ToolsComponent,
-    LoginComponent,
-    SignupComponent,
-    SignInComponent,
-    ToolListComponent,
-    ToolItemComponent,
-    UserInputComponent,
-    ErrorBannerComponent,
-    LayoutComponent,
-    HeaderComponent,
-    FooterComponent,
-    MenuComponent,
-    MenuItemComponent,
-    UsersComponent,
-    NotFoundComponent,
-    SignUpComponent,
-    AccountButtonComponent,
-    SignInButtonComponent,
-    ToolFilterComponent,
-    CurvedElementComponent,
-    CurvedElementComponent
+    AppComponent, // Componente principal de la aplicación
+    HomeComponent, // Componente de la página de inicio
+    ToolsComponent, // Componente de la página de herramientas
+    LoginComponent, // Componente de la página de inicio de sesión
+    SignupComponent,  // Componente de la página de registro
+    SignInComponent,  // Componente de la página de registro
+    ToolListComponent,  // Componente de la lista de herramientas
+    ToolItemComponent,  // Componente de la lista de herramientas
+    UserInputComponent, // Componente de la lista de herramientas
+    ErrorBannerComponent, // Componente del banner de error
+    LayoutComponent,  // Componente del layout de la aplicación
+    HeaderComponent,  // Componente del header de la aplicación
+    FooterComponent,  // Componente del footer de la aplicación
+    MenuComponent,  // Componente del menú de la aplicación
+    MenuItemComponent,  // Componente del menú de la aplicación
+    UsersComponent, // Componente de la página de usuarios
+    NotFoundComponent,  // Componente de la página de error 404
+    SignUpComponent,   // Componente de la página de registro
+    AccountButtonComponent, // Componente del botón de cuenta
+    SignInButtonComponent,  // Componente del botón de inicio de sesión
+    ToolFilterComponent,  // Componente del filtro de herramientas
+    CurvedElementComponent, // Componente del filtro de herramientas
+    CurvedElementComponent  // Componente del filtro de herramientas
   ],
+  /**
+   * Módulos importados por el módulo de la aplicación
+   */
   imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    GraphQLModule,
-    MatIconModule,
-    MatCheckboxModule,
-    HttpClientModule
+    BrowserModule,  // Módulo de la aplicación
+    AppRoutingModule, // Módulo de rutas de la aplicación
+    FormsModule,  // Módulo de formularios de la aplicación
+    ReactiveFormsModule,  // Módulo de formularios reactivos de la aplicación
+    GraphQLModule,  // Módulo de GraphQL de la aplicación
+    MatIconModule,  // Módulo de iconos de la aplicación
+    MatCheckboxModule,  // Módulo de checkbox de la aplicación
+    HttpClientModule  // Módulo de HTTP de la aplicación
   ],
-  providers: [UserContextService],
-  bootstrap: [AppComponent]
+  providers: [UserContextService],  // Servicios de la aplicación
+  bootstrap: [AppComponent] // Componente principal de la aplicación
 })
 export class AppModule {
 

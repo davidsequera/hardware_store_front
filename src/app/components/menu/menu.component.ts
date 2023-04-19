@@ -11,18 +11,25 @@ export class MenuComponent implements OnInit {
 
   @Input() MenuOn: boolean = false;
 
-
   constructor(private userContext: UserContextService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
+  /**
+   * Navega a una ruta especificada.
+   * @param route - La ruta a la que se quiere navegar.
+   *
+   */
   toPush(route: string): void {
-    // You can implement your own toogleAccoutMenu() function logic here
-    // if needed
+    // Puede implementar su propia lógica de función toggleAccountMenu() aquí si es necesario
     this.router.navigate([route]);
   }
 
+  /**
+   * Cierra la sesión del usuario actual.
+   *
+   */
   logout(): void {
     this.userContext.logout();
   }
