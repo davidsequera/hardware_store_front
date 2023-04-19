@@ -2,11 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Apollo } from 'apollo-angular';
 import { CookieService } from 'ngx-cookie-service';
-import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserContextService } from 'src/app/services/context/user-context.service';
 import { AUTHENTICATE } from 'src/app/graphql/graphql.auth.queries';
+import { CredentialType, TokenPair } from 'src/app/graphql/domains/auth';
 
 @Component({
   selector: 'app-sign-in',
@@ -42,21 +41,24 @@ export class SignInComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const email = this.signInForm.value.email;
-    const password = this.signInForm.value.password;  
+    const credential: CredentialType = {
+      email: this.signInForm.value.email,
+      password: this.signInForm.value.password
+    }
 
     this.apollo.mutate({
       mutation: AUTHENTICATE,
-      variables: { credential: { email, password } }
-    }).subscribe({
-      next: ({ data }: any) => {
+      variables: { credential }
+    })
+    .subscribe({
+      next: ({ data }: any ) => {
         console.log('Match', data);
-        if(data.authenticate.type === 'REFRESH'){
+        const TokenPair: TokenPair = data.authenticate;
+        if(TokenPair){
           this.apollo.client.resetStore();
-          const token: string = data.authenticate.value;
-          this.cookiesService.delete('token');
-          this.cookiesService.set('token', token);
-          this.userContextService.setJWT(this.cookiesService.get('token'));
+          this.userContextService.clearCookies();
+          this.userContextService.setCookies(TokenPair);
+          this.userContextService.setJWT(this.cookiesService.get('accessToken'));
           this.router.navigate(['/dashboard']);
         } else {
           this.errorMessage = 'El correo electrónico o la contraseña ingresados no son válidos.';

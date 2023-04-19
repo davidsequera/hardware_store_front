@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 // import { ApolloClient } from '@apollo/client';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { BehaviorSubject } from 'rxjs';
-
+import { BehaviorSubject } from 'rxjs';import { TokenPair } from 'src/app/graphql/domains/auth';
 @Injectable({
   providedIn: 'root'
 })
@@ -18,6 +17,17 @@ export class UserContextService {
 
   constructor(private router: Router, private cookieService: CookieService) {
   }
+
+  clearCookies(): void {
+    this.cookieService.delete('accessToken');
+    this.cookieService.delete('refreshToken');
+  }
+
+  setCookies(tokenPair: TokenPair): void {
+    this.cookieService.set('accessToken', tokenPair.accessToken.value);
+    this.cookieService.set('refreshToken', tokenPair.refreshToken.value);
+  }
+
 
   // setApolloClient(client: ApolloClient<any>): void {
   //   this.client = client;
