@@ -3,6 +3,8 @@
     <ul>
         <li class="ToolList" *ngFor="let tool of tools">
             <app-tool-item  [ngClass]="{'hidden': !userContext.brandsChecked[tool.brand] == true}" [title]="tool.name"  [description]="tool.description"   [link]="tool.link" ></app-tool-item>
+            <app-curved-element></app-curved-element>
         </li>
+      <app-curved-element></app-curved-element>
     </ul>
 </div>
