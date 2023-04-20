@@ -25,10 +25,13 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
-import { AccountButtonComponent } from './microcomponents/account-button/account-button.component';
-import { SignInButtonComponent } from './microcomponents/sign-in-button/sign-in-button.component';
 import { ToolFilterComponent } from './components/tool-filter/tool-filter.component';
 import {CurvedElementComponent} from "./microcomponents/tool-element/curved-element.component";
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { UserListComponent } from './components/user-list/user-list.component';
+import { MenuButtonComponent } from './microcomponents/menu-button/menu-button.component';
+import { UserItemComponent } from './microcomponents/user-item/user-item.component';
+import { UserSearchBarComponent } from './microcomponents/user-search-bar/user-search-bar.component';
 
 
 /**
@@ -54,11 +57,12 @@ import {CurvedElementComponent} from "./microcomponents/tool-element/curved-elem
     UsersComponent, // Componente de la página de usuarios
     NotFoundComponent,  // Componente de la página de error 404
     SignUpComponent,   // Componente de la página de registro
-    AccountButtonComponent, // Componente del botón de cuenta
-    SignInButtonComponent,  // Componente del botón de inicio de sesión
     ToolFilterComponent,  // Componente del filtro de herramientas
     CurvedElementComponent, // Componente del filtro de herramientas
-    CurvedElementComponent  // Componente del filtro de herramientas
+    CurvedElementComponent, 
+    DashboardComponent, 
+    UserListComponent, 
+    MenuButtonComponent, UserItemComponent, UserSearchBarComponent 
   ],
   /**
    * Módulos importados por el módulo de la aplicación

@@ -1,0 +1,17 @@
+<div class="Page-container" id="Dashboard">
+    <section id="Dashboard-user">
+        <div class="Dashboard-ball" >
+            <p>
+                {{data.user.name[0].toUpperCase()}}
+            </p>
+            </div>
+        <h1 class="Dashboard-user_name">{{data.user.name[0].toUpperCase() + data.user.name.slice(1).toLowerCase()}}</h1>
+    </section>
+    <!-- <section id="Dashboard-courses">
+        {data.user.courses.filter(e => e.value).map((e) => {
+        return (
+            <UserCourse key={e.id} link={e.id} title={e.name} total={e.total} value={e.value} ></UserCourse>)
+        })}
+        
+    </section> -->
+</div>

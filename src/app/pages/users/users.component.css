@@ -1,0 +1,26 @@
+#Users{
+    display: flex;
+    flex-direction: column ;
+    justify-content: center;
+    align-items: center;
+}
+
+#Users-title{
+    font-size: 10vw;
+    margin: 0.2rem;
+}
+
+.user-list-component{
+    padding: 2vw;
+}
+
+@media screen and (min-width: 768px) {
+    .user-list-component{
+        width: 90vw;
+    }
+    #Users-title{
+        font-size: 4.5rem;
+        margin: 0.3rem;
+    }
+}
+

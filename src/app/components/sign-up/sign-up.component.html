@@ -1,11 +1,17 @@
-<!-- <div class="SignInComponent_container" id="Form">
-    <form class="SignInComponent_form" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
-      Value: {{ signUpForm.value | json }}
-      <img alt="logo PMP" src="{{ logo }}" class="SignInComponent_User-logo" />
-      <app-user-input id="user_input_user" title="Email" type="email" name="email" [parentFormGroup]="signUpForm"> </app-user-input>
-      <app-user-input id="user_input_password" title="Contraseña" type="password" name="password" [parentFormGroup]="signUpForm"></app-user-input>
-      <button class="button" id="SignInComponent_button" [disabled]="!validateForm()">Sign In</button>
-      <app-error-banner *ngIf="error"></app-error-banner>
-    </form>
+<div class="SignUpComponent_container" id="Form">
+  <form class="SignUpComponent_form" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+    Value: {{ signUpForm.value | json }}
+    <app-user-input id="user_input_user" title="Email" type="email" name="email" [parentFormGroup]="signUpForm"> </app-user-input>
+    <app-user-input id="user_input_user" title="Password" type="password" name="password" [parentFormGroup]="signUpForm"> </app-user-input>
+    <app-user-input id="user_input_username" title="Username" type="text" name="username" [parentFormGroup]="signUpForm"></app-user-input>
+    <!-- <app-user-input id="user_input_name" title="name" type="text" name="name" [parentFormGroup]="signUpForm"></app-user-input> -->
+    <app-user-input id="user_input_last_name" title="Last Name" type="text" name="last_name" [parentFormGroup]="signUpForm"></app-user-input>
+    <app-user-input id="user_input_birthday" title="Birthday" type="text" name="birthday" [parentFormGroup]="signUpForm"></app-user-input>
+    <app-user-input id="user_input_city_birth" title="City of Birth" type="text" name="city_birth" [parentFormGroup]="signUpForm"></app-user-input>
+    <button class="button" id="SignUpComponent_button" [disabled]="!validateForm()">Sign In</button>
+    <app-error-banner *ngIf="error"></app-error-banner>
+  </form>
 </div>
-   -->
+
+
+

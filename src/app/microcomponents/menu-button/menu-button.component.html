@@ -1,0 +1,11 @@
+<div class="MenuButton">
+    <div #menuRef class="MenuButton-main">
+      <ng-container *ngIf="isMinWidth768px">
+        <mat-icon role="button" class="menu-button" id="MenuButton" aria-label="MenuButton" label="MenuButton" (click)="toggleMenu()">{{jwt ? "account_circle" : "apps"}}</mat-icon>
+      </ng-container>
+      <ng-container *ngIf="!isMinWidth768px">
+        <mat-icon role="button" class="menu-button" id="MenuButton" aria-label="MenuButton" label="MenuButton" (click)="toggleMenu()">menu</mat-icon>
+      </ng-container>
+      <app-menu [MenuOn]="MenuOn"  (toogleAccoutMenu)="toggleMenu()"></app-menu>
+    </div>
+</div>

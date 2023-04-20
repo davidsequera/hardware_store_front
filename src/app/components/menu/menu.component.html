@@ -2,8 +2,10 @@
     <!-- //TODO: VISIBLE WHEN USER IS LOGGED IN -->
   
     <!-- <div [ngClass]="{ 'account-menu-on': userContext.accountMenuOn }"> -->
-    <app-menu-item [title]="'Mi cuenta'" [link]="'/dashboard'"></app-menu-item>
-    <app-menu-item [title]="'Cursos'" [link]="'/tools'"></app-menu-item>
-    <app-menu-item [title]="'Home'" [link]="'/'"></app-menu-item>
-    <app-menu-item [title]="'Logout'" [link]="'logout'"></app-menu-item>
+    <app-menu-item *ngIf="jwt" [mdIcon]="'account_circle'" [title]="'My Account'" [link]="'/dashboard'"></app-menu-item>
+    <app-menu-item [mdIcon]="'construction'" [title]="'Tools'" [link]="'/tools'"></app-menu-item>
+    <app-menu-item [mdIcon]="'home'" [title]="'Home'" [link]="'/'"></app-menu-item>
+    <app-menu-item *ngIf="jwt" [mdIcon]="'group'" [title]="'Users'" [link]="'/users'"></app-menu-item>
+    <app-menu-item *ngIf="jwt" [mdIcon]="'logout'" [title]="'Logout'" [link]="'logout'"></app-menu-item>
+    <app-menu-item *ngIf="!jwt" [mdIcon]="'logout'" [title]="'LogIn'" [link]="'/login'"></app-menu-item>
   </div>

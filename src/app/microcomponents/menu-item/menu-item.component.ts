@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserContextService } from 'src/app/services/context/user-context.service';
 
@@ -10,12 +10,13 @@ import { UserContextService } from 'src/app/services/context/user-context.servic
   templateUrl: './menu-item.component.html', // URL de la plantilla HTML que se utilizará para renderizar este componente
   styleUrls: ['./menu-item.component.css'] // URLs de las hojas de estilo CSS que se utilizarán para este componente
 })
-export class MenuItemComponent {
+export class MenuItemComponent  {
 
   @Input() title: string | undefined; // título del elemento de menú
+  @Input() mdIcon: string = "fiber_manual_record"; // título del elemento de menú
   @Input() link: string = ''; // ruta del elemento de menú
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private userContext: UserContextService) { }
 
   /**
    * Navega a la ruta especificada en el elemento de menú
@@ -34,7 +35,7 @@ export class MenuItemComponent {
    * Cierra la sesión del usuario
    */
   logout(): void {
-    // this.userContext.logout();
+    this.userContext.logout();
   }
 
 }

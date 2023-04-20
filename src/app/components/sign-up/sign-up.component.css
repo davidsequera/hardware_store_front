@@ -1,0 +1,42 @@
+.SignUpComponent_container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.SignUpComponent_form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    /* border: 2px solid var(--color-A4); */
+    box-shadow: 0 2px 5px 1px rgba(64,60,67,.16);
+    background-color: var(--color-A);
+    border-radius: 1rem;
+    margin: 20px;
+}
+.SignUpComponent_User-logo{
+    width: 45px;
+    object-fit: cover;
+    color: var(--color-B);
+    margin: 10px;
+    flex-shrink: 0;
+}
+
+#SignUpComponent_button{
+    border-radius: 16rem;
+    margin: 35px 0 20px 0;
+    width: 60vw;
+    height: 12vh;
+}
+
+
+@media screen and (min-width: 768px){
+    #SignUpComponent_button{
+        width: 335px;
+        height: 81px;
+    }
+    .SignUpComponent_User-logo{
+        width: 50px;
+    }
+}

@@ -1,0 +1,9 @@
+.user-list-container{
+    width: 100%;
+}
+
+.UserList{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

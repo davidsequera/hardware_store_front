@@ -31,6 +31,8 @@ body {
   --color-A5: #E0E0E0;
   /* Color Theme B */
   --color-B1: #F9AB23;
+  --raw-B1: 249, 171, 35;
+
   --color-B2: #DB7F1F;
   --color-B3: #DB481F;
   --color-B4: #F93323;
@@ -38,7 +40,6 @@ body {
   --color-C1: #F9C725;
   --color-C2: #DB9C21;
   --color-C3: #DB6C21;
-  --raw-C3: 13, 38, 64;
   --color-C4: #F95C25;
   /* Color Theme D */
   --color-D1: #F9F039;

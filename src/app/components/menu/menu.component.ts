@@ -8,12 +8,13 @@ import { UserContextService } from 'src/app/services/context/user-context.servic
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-
+  jwt: string | null = null;
   @Input() MenuOn: boolean = false;
 
   constructor(private userContext: UserContextService, private router: Router) { }
 
   ngOnInit(): void {
+    this.userContext.jwt$.subscribe(jwt => this.jwt = jwt);
   }
 
   /**

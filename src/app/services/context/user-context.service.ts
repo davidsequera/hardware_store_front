@@ -11,7 +11,7 @@ import { TokenPair } from 'src/app/graphql/domains/auth';
   providedIn: 'root' // indica que este servicio está disponible en toda la aplicación
 })
 export class UserContextService {
-  private jwtSubject = new BehaviorSubject<string | null>(this.cookieService.get('token'));
+  private jwtSubject = new BehaviorSubject<string | null>(this.cookieService.get('accessToken'));
   jwt$ = this.jwtSubject.asObservable(); // observable que emite el token JWT actual
 
   brandsChecked: {[key: string]: any} = {}; // objeto que almacena las marcas que han sido seleccionadas en la lista de herramientas
@@ -40,7 +40,6 @@ export class UserContextService {
    * @param jwt token JWT actual
    */
   setJWT(jwt: string): void {
-    this.cookieService.set('token', jwt);
     this.jwtSubject.next(jwt);
   }
 
@@ -48,8 +47,8 @@ export class UserContextService {
    * Borra el token JWT actual y lo emite a través del observable `jwt$`
    */
   clearJWT(): void {
-    this.cookieService.delete('token');
     this.jwtSubject.next(null);
+
     this.router.navigate(['/login']);
   }
 

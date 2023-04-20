@@ -1,0 +1,16 @@
+<div class="user-list-container">
+    <app-user-search-bar></app-user-search-bar>
+    <ul class="UserList" >
+        <li *ngFor="let user of users">
+            <app-user-item 
+            [id]="user.id"
+            [name]="user.name"
+            [last_name]="user.last_name"
+            [username]="user.username"
+            [birthday]="user.birthday"
+            [city_birth]="user.city_birth"
+            [credentials]="user.credentials"
+            ></app-user-item>
+        </li>
+    </ul>
+</div>

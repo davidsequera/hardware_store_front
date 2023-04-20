@@ -1,7 +1,10 @@
-.AccountButton-main{
+.MenuButton-main{
     display: flex;
 }
-.account-button{
+.menu-button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 2rem;
     width: 2rem;    
     border-radius: 50%;
@@ -14,29 +17,30 @@
 
     /* font-size: 16px; */
     position: fixed;
-    top: 1vh;
-    left: 1.2vw;
+    bottom: 5vh;
+    left: 5vw;
     transition: 200ms;
 }
 
-.account-button:active{
+.menu-button:active{
     background-color: var(--color-A);
 }
 @media screen and (min-width: 768px){
-    .account-button {
-        height: 2rem;
-        width: 2rem;
+    .menu-button {
+        font-size: 2.5rem;
+        height: 3rem;
+        width: 3rem;
         opacity: 0.8;
         padding: 0%;
         background-color: transparent;
         color: var(--color-A);
         /* font-size: 16px; */
         position: initial;
-        top: 0;
+        bottom: 0;
         left: 0;
     }
     
-    .account-button:hover {
+    .menu-button:hover {
         opacity: 1;
     }
     .burger-button {
