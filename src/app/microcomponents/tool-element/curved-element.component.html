@@ -1,8 +1,8 @@
 <div class="curved-element">
-  <img class="object-image" src="../../../assets/img/flex_drill.png" alt="Flex Drill">
+  <img class="object-image" [src]="imageSrc" [alt]="imageAlt">
   <div class="title-wrapper">
-    <h1 class="title">Title</h1>
-    <h2 class="subtitle">Subtitle</h2>
+    <h1 class="title" [style.fontSize]="getTitleFontSize()">{{title}}</h1>
+    <h2 class="description" [style.fontSize]="getDescriptionFontSize()">{{description}}</h2>
   </div>
-  <a class="ios-button" href="#">Mas Informacion</a>
+  <a class="ios-button" [href]="link">Mas Informacion</a>
 </div>

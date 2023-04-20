@@ -27,7 +27,7 @@ export class ToolListComponent implements OnInit {
     this.apollo = apollo;
     this.userContext = userContext;
   }
-  
+
   ngOnInit(): void {
     this.addTools();
   }

@@ -63,7 +63,10 @@ export class SignInComponent implements OnInit {
 
     this.apollo.use('auth').mutate({ // Realiza la consulta de autenticación
       mutation: AUTHENTICATE,
-      variables: { credential }
+      variables: { credential },
+      context: { // Add the context object with the uriKey
+        uriKey: 'auth',
+      },
     })
     .subscribe({ // Suscribe a los resultados de la consulta
       next: ({ data }: any ) => { // Si la consulta es exitosa

@@ -6,6 +6,7 @@
   height: 33vh;
   font-family: 'Forma DJR Display', sans-serif;
   position: relative;
+  margin: 5em 0.5em;
 }
 
 .object-image {
@@ -27,15 +28,16 @@
   font-size: 1.8em;
   font-weight: 700;
   font-style: italic;
-  margin-left: 0.6em;
+  margin-left: 0.8em;
 }
 
-.subtitle {
+.description {
   color: rgba(242, 242, 242, 0.61);
   font-size: 1em;
   font-weight: 400;
   margin: 0;
   margin-left: 1em;
+  margin-right: 2em;
   margin-bottom: 0.6em;
 }
 
