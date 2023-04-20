@@ -74,7 +74,7 @@ export class SignInComponent implements OnInit {
           this.userContextService.clearCookies();
           this.userContextService.setCookies(TokenPair);
           this.userContextService.setJWT(this.cookiesService.get('accessToken'));
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/tools']);
         } else { // Si el token no es válido
           this.errorMessage = 'El correo electrónico o la contraseña ingresados no son válidos.';
         }

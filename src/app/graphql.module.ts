@@ -4,9 +4,9 @@ import { ApolloClientOptions, InMemoryCache } from '@apollo/client/core';
 import { HttpLink } from 'apollo-angular/http';
 
 const urisMap = new Map<string, string>();
-urisMap.set('tools', 'http://localhost:8080');
-urisMap.set('users', 'http://localhost:8085');
-urisMap.set('auth', 'http://localhost:8090');
+urisMap.set('tools', 'http://localhost:8080/graphql');
+urisMap.set('users', 'http://localhost:8085/graphql');
+urisMap.set('auth', 'http://localhost:8090/graphql');
 
 /**
  * Función que devuelve la configuración de ApolloClient
