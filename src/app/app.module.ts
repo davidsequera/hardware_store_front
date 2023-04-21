@@ -32,8 +32,7 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { MenuButtonComponent } from './microcomponents/menu-button/menu-button.component';
 import { UserItemComponent } from './microcomponents/user-item/user-item.component';
 import { UserSearchBarComponent } from './microcomponents/user-search-bar/user-search-bar.component';
-
-
+import { MicroLoadingComponent } from './microcomponents/micro-loading/micro-loading.component';
 /**
  * Módulo de la aplicación Angular que declara los componentes, servicios y otros módulos utilizados en la aplicación
  */
@@ -62,7 +61,9 @@ import { UserSearchBarComponent } from './microcomponents/user-search-bar/user-s
     CurvedElementComponent, 
     DashboardComponent, 
     UserListComponent, 
-    MenuButtonComponent, UserItemComponent, UserSearchBarComponent 
+    MenuButtonComponent, 
+    UserItemComponent, 
+    UserSearchBarComponent, MicroLoadingComponent
   ],
   /**
    * Módulos importados por el módulo de la aplicación
@@ -75,7 +76,7 @@ import { UserSearchBarComponent } from './microcomponents/user-search-bar/user-s
     GraphQLModule,  // Módulo de GraphQL de la aplicación
     MatIconModule,  // Módulo de iconos de la aplicación
     MatCheckboxModule,  // Módulo de checkbox de la aplicación
-    HttpClientModule  // Módulo de HTTP de la aplicación
+    HttpClientModule,  // Módulo de HTTP de la aplicación
   ],
   providers: [UserContextService],  // Servicios de la aplicación
   bootstrap: [AppComponent] // Componente principal de la aplicación

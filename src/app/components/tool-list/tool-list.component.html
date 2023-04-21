@@ -1,10 +1,18 @@
 <div class="ToolsLayout">
-    <app-tool-filter [brands]="brands"></app-tool-filter>
-    <ul class="ToolList" >
-        <li *ngFor="let tool of tools">
-            <!-- <app-tool-item  [ngClass]="{'hidden': !userContext.brandsChecked[tool.brand.name] == true}" [title]="tool.name"  [description]="tool.description"  ></app-tool-item> -->
-            <app-tool-item   [name]="tool.name"  [description]="tool.description"  ></app-tool-item>
-            <!-- <app-curved-element></app-curved-element> -->
-        </li>
-    </ul>
+    <ng-container *ngIf="loading">
+        <div class="ToolsLoading">
+            <app-micro-loading></app-micro-loading>
+        </div>
+    </ng-container>
+    <div *ngIf="error">Error, please try again</div>
+    <ng-container *ngIf="tools">
+        <app-tool-filter [brands]="brands"></app-tool-filter>
+        <ul class="ToolList" >
+            <li *ngFor="let tool of tools">
+                <!-- <app-tool-item  [ngClass]="{'hidden': !userContext.brandsChecked[tool.brand.name] == true}" [title]="tool.name"  [description]="tool.description"  ></app-tool-item> -->
+                <app-tool-item   [name]="tool.name"  [description]="tool.description"  ></app-tool-item>
+                <!-- <app-curved-element></app-curved-element> -->
+            </li>
+        </ul>
+    </ng-container>
 </div>

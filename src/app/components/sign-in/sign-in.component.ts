@@ -61,7 +61,7 @@ export class SignInComponent implements OnInit {
       password: this.signInForm.value.password
     }
 
-    this.apollo.mutate({ // Realiza la consulta de autenticación
+    this.apollo.use('auth').mutate({ // Realiza la consulta de autenticación
       mutation: AUTHENTICATE,
       variables: { credential }
     })
@@ -80,7 +80,7 @@ export class SignInComponent implements OnInit {
         }
       },
       error: (error) => { // Si la consulta falla
-        console.log('There was an error sending the query', error);
+        console.error('There was an error sending the query', error);
         this.error = error;
       }
     })
