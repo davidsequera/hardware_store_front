@@ -1,12 +1,12 @@
+
+.ToolsLayout{
+    display: flex;
+}
 .ToolList{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-}
-
-.ToolsLayout{
-    display: flex;
 }
 
 @media screen and (min-width: 768px){

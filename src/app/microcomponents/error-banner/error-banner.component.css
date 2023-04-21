@@ -1,7 +1,8 @@
 .ErrorBanner{
-    position:absolute;
+    /* left: 0; */
+    /* right: 0; */
+    text-align: center;
     cursor: pointer;
-    top: 85vh; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,7 +10,6 @@
     color: var(--color-Error);
     border-radius: 100px;
     padding: 0 0.5rem;
-    animation: shrinking 5s ease forwards;
 }
 .ErrorBanner-icon{
     font-size: 1.5rem;

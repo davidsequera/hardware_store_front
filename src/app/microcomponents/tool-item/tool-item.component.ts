@@ -12,7 +12,9 @@ import { Component, Input } from '@angular/core';
  * Componente para los elementos de la lista de herramientas
  */
 export class ToolItemComponent {
-  @Input() title?: string ; // Título del elemento
-  @Input() description?: string ; // Descripción del elemento
-  @Input() link?: string ;  // Enlace del elemento
+  @Input() id?: string;
+  @Input() name?: string;
+  @Input() description?: string;
+  @Input() brand: any;
+  @Input() cities: any;
 }

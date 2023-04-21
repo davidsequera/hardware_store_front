@@ -1,10 +1,10 @@
 <div class="ToolsLayout">
     <app-tool-filter [brands]="brands"></app-tool-filter>
-    <ul>
-        <li class="ToolList" *ngFor="let tool of tools">
-            <app-tool-item  [ngClass]="{'hidden': !userContext.brandsChecked[tool.brand] == true}" [title]="tool.name"  [description]="tool.description"   [link]="tool.link" ></app-tool-item>
-            <app-curved-element></app-curved-element>
+    <ul class="ToolList" >
+        <li *ngFor="let tool of tools">
+            <!-- <app-tool-item  [ngClass]="{'hidden': !userContext.brandsChecked[tool.brand.name] == true}" [title]="tool.name"  [description]="tool.description"  ></app-tool-item> -->
+            <app-tool-item   [name]="tool.name"  [description]="tool.description"  ></app-tool-item>
+            <!-- <app-curved-element></app-curved-element> -->
         </li>
-      <app-curved-element></app-curved-element>
     </ul>
 </div>
