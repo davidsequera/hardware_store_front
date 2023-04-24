@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './pages/home/home.component';
-import { ToolsComponent } from './pages/tools/tools.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from './app-routing.module';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './pages/home/home.component';
+import { ToolsComponent } from './pages/tools/tools.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { ToolListComponent } from './components/tool-list/tool-list.component';
@@ -21,7 +21,6 @@ import { MenuComponent } from './components/menu/menu.component';
 import { MenuItemComponent } from './microcomponents/menu-item/menu-item.component';
 import { UsersComponent } from './pages/users/users.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
-import {MatCheckboxModule} from '@angular/material/checkbox';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { ToolFilterComponent } from './components/tool-filter/tool-filter.component';
@@ -31,12 +30,17 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { MenuButtonComponent } from './microcomponents/menu-button/menu-button.component';
 import { UserItemComponent } from './microcomponents/user-item/user-item.component';
 import { MicroLoadingComponent } from './microcomponents/micro-loading/micro-loading.component';
-import {MatIconModule} from '@angular/material/icon';
-
-// import { FlexLayoutModule } from '@angular/flex-layout';
-import { FilterPipe} from './filter.pipe';
+import { PaginationIndicatorComponent } from './microcomponents/pagination-indicator/pagination-indicator.component';
 import { SearchBarComponent } from './microcomponents/search-bar/search-bar.component';
 
+// import { FlexLayoutModule } from '@angular/flex-layout';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { FilterPipe} from './filter.pipe';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button';
 
 /**
  * Módulo de la aplicación Angular que declara los componentes, servicios y otros módulos utilizados en la aplicación
@@ -70,7 +74,8 @@ import { SearchBarComponent } from './microcomponents/search-bar/search-bar.comp
     UserItemComponent, 
     MicroLoadingComponent,
     FilterPipe,
-    SearchBarComponent
+    SearchBarComponent,
+    PaginationIndicatorComponent
     
   ],
   /**
@@ -78,14 +83,16 @@ import { SearchBarComponent } from './microcomponents/search-bar/search-bar.comp
    */
   imports: [
     BrowserModule,  // Módulo de la aplicación
+    BrowserAnimationsModule,  // Módulo de animaciones de la aplicación
     AppRoutingModule, // Módulo de rutas de la aplicación
     FormsModule,  // Módulo de formularios de la aplicación
     ReactiveFormsModule,  // Módulo de formularios reactivos de la aplicación
     GraphQLModule,  // Módulo de GraphQL de la aplicación
+    HttpClientModule,  // Módulo de HTTP de la aplicación
     MatIconModule,  // Módulo de iconos de la aplicación
     MatCheckboxModule,  // Módulo de checkbox de la aplicación
-    HttpClientModule,  // Módulo de HTTP de la aplicación
-    
+    MatMenuModule,  // Módulo de menú de la aplicación
+    MatButtonModule,  // Módulo de botones de la aplicación
   ],
   providers: [UserContextService],  // Servicios de la aplicación
   bootstrap: [AppComponent] // Componente principal de la aplicación

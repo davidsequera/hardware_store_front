@@ -11,9 +11,12 @@
       <ul class="ToolList" >
           <li *ngFor="let tool of tools">
               <!-- <app-tool-item  [ngClass]="{'hidden': !userContext.brandsChecked[tool.brand.name] == true}" [title]="tool.name"  [description]="tool.description"  ></app-tool-item> -->
-              <app-tool-item   [name]="tool.name"  [description]="tool.description"  ></app-tool-item>
+              <app-tool-item  [ngClass]="{hidden: !isToolfromBrand(tool)}"  [name]="tool.name"  [description]="tool.description"  ></app-tool-item>
               <!-- <app-curved-element></app-curved-element> -->
           </li>
       </ul>
-  </ng-container>
+    <!-- <app-pagination-indicator [total]="total" [page]="page" [limit]="limit" (pageChange)="onPageChange($event)"></app-pagination-indicator> -->
+</ng-container>
+
 </div>
+<app-pagination-indicator></app-pagination-indicator>

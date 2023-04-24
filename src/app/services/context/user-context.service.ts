@@ -14,7 +14,8 @@ export class UserContextService {
   private jwtSubject = new BehaviorSubject<string | null>(this.cookieService.get('accessToken'));
   jwt$ = this.jwtSubject.asObservable(); // observable que emite el token JWT actual
 
-  brandsChecked: {[key: string]: any} = {}; // objeto que almacena las marcas que han sido seleccionadas en la lista de herramientas
+  
+  brandsChecked: {[key: string]: boolean} = {}; // objeto que almacena las marcas que han sido seleccionadas en la lista de herramientas
 
   constructor(private router: Router, private cookieService: CookieService) {}
 

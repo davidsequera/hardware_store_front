@@ -19,7 +19,7 @@ export class ToolFilterComponent implements OnInit {
   ngOnInit(): void {
 
     this.brands?.forEach(brand => {
-      this.userContext.brandsChecked[brand] = false;
+      this.userContext.brandsChecked[brand.id] = false;
     })
   }
   checked = false;

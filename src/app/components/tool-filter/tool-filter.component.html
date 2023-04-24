@@ -3,7 +3,7 @@
     <!-- ngfor -->
     <ul class="ToolList">
         <li *ngFor="let brand of brands">
-            <mat-checkbox [(ngModel)]="userContext.brandsChecked[brand.name]">{{brand.name}}</mat-checkbox>
+            <mat-checkbox [(ngModel)]="userContext.brandsChecked[brand.id]">{{brand.name}}</mat-checkbox>
         </li>
     </ul>
 </div>

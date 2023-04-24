@@ -15,7 +15,7 @@ export class ToolListComponent implements OnInit {
   tools?: any[];
   brands?: any[];
   loading = true;
-
+  search = '';
 
   error: any;
   /**
@@ -57,8 +57,20 @@ export class ToolListComponent implements OnInit {
 
   }
 
-  onSeachbarInput(name: string) {
 
+  isToolfromBrand(tool: any): boolean {
+    //  check if any brand is selected
+    if(Object.values(this.userContext.brandsChecked).includes(true)) {
+      return this.userContext.brandsChecked[tool.brand.id];
+    }
+    console.log("[BRANDS]",this.userContext.brandsChecked);
+    return true;
+    //  check if the tool is from a brand selected
+  }
+
+
+  onSeachbarInput(name: string) {
+    this.search = name;
     console.log("[NAME]",name);
     if(name === '') {
       this.addTools();

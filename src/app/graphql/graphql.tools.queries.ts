@@ -53,6 +53,7 @@ const GET_TOOL_BY_NAME = gql`
         name
         description
         brand{
+            id
             name
         }
     }
