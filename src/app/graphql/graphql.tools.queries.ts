@@ -1,5 +1,4 @@
 import {gql} from 'apollo-angular'
-import {useQuery} from "@apollo/client";
 
 const GET_ALL_TOOLS = gql`
   query {
@@ -7,16 +6,17 @@ const GET_ALL_TOOLS = gql`
         id
         name
         description
+        brand{
+          id
+        }
     }
+    getBrands{
+        id
+        name
+    }
+
   }
 `
-
-const { data, loading, error } = useQuery(GET_ALL_TOOLS, {
-  context: {
-    uriKey: 'tools', // or 'users', or 'auth'
-  },
-});
-
 
 const GET_TOOLS = gql`
   query toolsPage($toolPageInput: toolPageInput!){
@@ -25,6 +25,7 @@ const GET_TOOLS = gql`
           name
           description
           brand{
+              
               name
           }
       }
@@ -44,6 +45,19 @@ const GET_TOOL_BY_ID = gql`
   }
 `
 
+
+const GET_TOOL_BY_NAME = gql`
+  query getToolsByName($toolPageInput: toolPageInput, $search: String){
+    getToolsByName(input: $toolPageInput, search: $search){
+        id
+        name
+        description
+        brand{
+            name
+        }
+    }
+  }
+`
 const GET_BRANDS = gql`
   query {
     getBrands {
@@ -103,4 +117,4 @@ const DELETE_TOOL = gql`
   }
   `
 
-export { GET_ALL_TOOLS, GET_TOOLS, GET_TOOL_BY_ID, GET_BRANDS, GET_CITITES, GET_CITY_BY_ID, CREATE_TOOL, UPDATE_TOOL, DELETE_TOOL}
+export { GET_ALL_TOOLS, GET_TOOLS,GET_TOOL_BY_NAME, GET_TOOL_BY_ID, GET_BRANDS, GET_CITITES, GET_CITY_BY_ID, CREATE_TOOL, UPDATE_TOOL, DELETE_TOOL}

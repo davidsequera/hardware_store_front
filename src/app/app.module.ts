@@ -21,7 +21,6 @@ import { MenuComponent } from './components/menu/menu.component';
 import { MenuItemComponent } from './microcomponents/menu-item/menu-item.component';
 import { UsersComponent } from './pages/users/users.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
-import {MatIconModule} from '@angular/material/icon';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
@@ -31,8 +30,14 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { MenuButtonComponent } from './microcomponents/menu-button/menu-button.component';
 import { UserItemComponent } from './microcomponents/user-item/user-item.component';
-import { UserSearchBarComponent } from './microcomponents/user-search-bar/user-search-bar.component';
 import { MicroLoadingComponent } from './microcomponents/micro-loading/micro-loading.component';
+import {MatIconModule} from '@angular/material/icon';
+
+// import { FlexLayoutModule } from '@angular/flex-layout';
+import { FilterPipe} from './filter.pipe';
+import { SearchBarComponent } from './microcomponents/search-bar/search-bar.component';
+
+
 /**
  * Módulo de la aplicación Angular que declara los componentes, servicios y otros módulos utilizados en la aplicación
  */
@@ -63,7 +68,10 @@ import { MicroLoadingComponent } from './microcomponents/micro-loading/micro-loa
     UserListComponent, 
     MenuButtonComponent, 
     UserItemComponent, 
-    UserSearchBarComponent, MicroLoadingComponent
+    MicroLoadingComponent,
+    FilterPipe,
+    SearchBarComponent
+    
   ],
   /**
    * Módulos importados por el módulo de la aplicación
@@ -77,6 +85,7 @@ import { MicroLoadingComponent } from './microcomponents/micro-loading/micro-loa
     MatIconModule,  // Módulo de iconos de la aplicación
     MatCheckboxModule,  // Módulo de checkbox de la aplicación
     HttpClientModule,  // Módulo de HTTP de la aplicación
+    
   ],
   providers: [UserContextService],  // Servicios de la aplicación
   bootstrap: [AppComponent] // Componente principal de la aplicación

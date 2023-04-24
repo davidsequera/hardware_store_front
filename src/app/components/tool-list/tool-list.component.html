@@ -1,20 +1,19 @@
-<input type="text" (input)="onSearchInput($event)" placeholder="Search by name" />
-
-
+<app-search-bar *ngIf="tools && brands" (searchText)="onSeachbarInput($event)">  </app-search-bar>
 <div class="ToolsLayout">
-  <app-tool-filter [brands]="brands" (onFilterChange)="updateFilteredTools()"></app-tool-filter>
-  <ng-container *ngIf="!anyBrandChecked(); else filteredToolList">
-    <ul class="ToolList">
-      <li *ngFor="let tool of tools">
-        <app-curved-element [title]="tool.name" [description]="tool.description" [link]="tool.link" [imageSrc]="'../../../assets/img/flex_drill.png'" [imageAlt]="'Flex Drill'"></app-curved-element>
-      </li>
-    </ul>
+  <ng-container *ngIf="loading">
+      <div class="ToolsLoading">
+          <app-micro-loading></app-micro-loading>
+      </div>
   </ng-container>
-  <ng-template #filteredToolList>
-    <ul class="ToolList">
-      <li *ngFor="let tool of filteredTools">
-        <app-curved-element *ngIf="userContext.brandsChecked[tool.brand]" [title]="tool.name" [description]="tool.description" [link]="tool.link" [imageSrc]="'../../../assets/img/flex_drill.png'" [imageAlt]="'Flex Drill'"></app-curved-element>
-      </li>
-    </ul>
-  </ng-template>
+  <div *ngIf="error">Error, please try again</div>
+  <ng-container *ngIf="tools">
+      <app-tool-filter [brands]="brands"></app-tool-filter>
+      <ul class="ToolList" >
+          <li *ngFor="let tool of tools">
+              <!-- <app-tool-item  [ngClass]="{'hidden': !userContext.brandsChecked[tool.brand.name] == true}" [title]="tool.name"  [description]="tool.description"  ></app-tool-item> -->
+              <app-tool-item   [name]="tool.name"  [description]="tool.description"  ></app-tool-item>
+              <!-- <app-curved-element></app-curved-element> -->
+          </li>
+      </ul>
+  </ng-container>
 </div>

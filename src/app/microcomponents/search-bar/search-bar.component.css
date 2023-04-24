@@ -1,4 +1,4 @@
-.user-search-bar{
+.search-bar{
     padding: 1rem;
     display: flex;
     align-items: center;
@@ -9,11 +9,11 @@
     transition: border 5s ease;
 }
 
-.user-search-bar-icon{
+.search-bar-icon{
     color: var(--color-A4) ;
 }
 
-.user-search-bar-input{
+.search-bar-input{
     flex: 1;
     padding: 0.5rem;
     border: none;
