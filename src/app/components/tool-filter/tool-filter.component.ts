@@ -8,12 +8,17 @@ import { UserContextService } from 'src/app/services/context/user-context.servic
 })
 export class ToolFilterComponent implements OnInit {
   @Input() brands?: any[];
+  @Input() filterOn: boolean = false;
   // TODO: MAKE THING RIGTH
   // @Output() brandsChecked: {[key: string]: any} = {};
   userContext: UserContextService;
 
   constructor(userContext: UserContextService) { 
     this.userContext = userContext;
+  }
+
+  toogleFilter() {
+    this.filterOn = !this.filterOn;
   }
 
   ngOnInit(): void {

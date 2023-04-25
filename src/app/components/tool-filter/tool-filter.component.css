@@ -1,4 +1,91 @@
-.toolFilter{
-    border: 0.2rem solid var(--color-A);
-    border-radius: 0.1rem;
+.ToolFilter{
+    position: absolute;
+    display: flex;
+    z-index: 1;
+    flex-direction: column;
+    justify-content: space-evenly;
+    /* background-color: rgba(var(--raw-B1),0.85); */
+    transition: 1100ms;
+    /* backdrop-filter: blur(0.2rem); */
+    /* -webkit-backdrop-filter: blur(00.2rem); */
+    margin: 0;
+    padding: 0;
+    right: 0;
+    padding: 0.5rem;
+    /* left: ; */
+    height: 100vh;
+    width: 100%;
+    color: var(--color-B);
+    background-color: var(--color-A);
+}
+
+
+.ToolFilter ::-webkit-scrollbar {
+    display: none;
+}
+.ToolFilterExitButton{
+    color: var(--color-F);
+}
+
+
+
+.ToolFilterExitButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2rem;
+    width: 2rem;    
+    border-radius: 50%;
+    padding: 0.3rem;
+    /* background-color: var(--color-B); */
+    color: var(--color-F);
+    text-align: center;
+    z-index: 1000;
+    cursor: pointer;
+    transition: 200ms;
+}
+
+.ToolFilterExitButton:active{
+    background-color: var(--color-A);
+}
+
+.ToolFilterTitleContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.ToolList{
+    margin: 0.5rem;
+    overflow: scroll;
+
+}
+
+
+@media screen and (min-width: 768px){
+    .ToolFilter{
+        height: initial;
+        align-items: initial;
+        width: 30%;
+    }
+}
+
+.desktop-filter-panel-overlay {
+    z-index: 2100000001;
+    background-color: rgba(0,0,0,.2);
+    bottom: 0;
+    cursor: pointer;
+    display: block;
+    left: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    transition: opacity .3s cubic-bezier(0, 0.5, 0.2, 1),visibility .3s cubic-bezier(0, 0.5, 0.2, 1)
+}
+
+.desktop-filter-panel-overlay.isNotActive {
+    visibility: hidden;
+    opacity: 0;
 }

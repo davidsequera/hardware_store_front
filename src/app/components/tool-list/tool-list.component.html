@@ -1,22 +1,23 @@
-<app-search-bar *ngIf="tools && brands" (searchText)="onSeachbarInput($event)">  </app-search-bar>
-<div class="ToolsLayout">
-  <ng-container *ngIf="loading">
-      <div class="ToolsLoading">
-          <app-micro-loading></app-micro-loading>
-      </div>
-  </ng-container>
-  <div *ngIf="error">Error, please try again</div>
-  <ng-container *ngIf="tools">
-      <app-tool-filter [brands]="brands"></app-tool-filter>
-      <ul class="ToolList" >
-          <li *ngFor="let tool of tools">
-              <!-- <app-tool-item  [ngClass]="{'hidden': !userContext.brandsChecked[tool.brand.name] == true}" [title]="tool.name"  [description]="tool.description"  ></app-tool-item> -->
-              <app-tool-item  [ngClass]="{hidden: !isToolfromBrand(tool)}"  [name]="tool.name"  [description]="tool.description"  ></app-tool-item>
-              <!-- <app-curved-element></app-curved-element> -->
-          </li>
-      </ul>
-    <!-- <app-pagination-indicator [total]="total" [page]="page" [limit]="limit" (pageChange)="onPageChange($event)"></app-pagination-indicator> -->
-</ng-container>
-
+<div class="tool-list">
+    <app-search-bar *ngIf="tools && brands" (searchText)="onSeachbarInput($event)">  </app-search-bar>
+    <div class="filterButton-container">
+        <mat-icon *ngIf="tools && brands" role="button" class="filter-button" id="filterButton" aria-label="filterButton" label="filterButton" (click)="openFilter()">filter_list</mat-icon>
+    </div>
+    <div class="ToolsLayout">
+        <ng-container *ngIf="loading">
+            <div class="ToolsLoading">
+                <app-micro-loading></app-micro-loading>
+            </div>
+        </ng-container>
+        <div *ngIf="error">Error, please try again</div>
+        <ng-container *ngIf="tools">
+            <ul class="ToolList" >
+                <li *ngFor="let tool of tools">
+                    <app-tool-item  [ngClass]="{hidden: !isToolfromBrand(tool)}"  [name]="tool.name"  [description]="tool.description"  ></app-tool-item>
+                </li>
+            </ul>
+            <app-tool-filter [filterOn]="filterOn" [brands]="brands"></app-tool-filter>
+        </ng-container>
+    </div>
+    <app-pagination-indicator></app-pagination-indicator>
 </div>
-<app-pagination-indicator></app-pagination-indicator>

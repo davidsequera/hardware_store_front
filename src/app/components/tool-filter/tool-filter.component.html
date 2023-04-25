@@ -1,9 +1,14 @@
-<div class="toolFilter" style="margin: 10px;">
-    <h2>Marca</h2>
-    <!-- ngfor -->
-    <ul class="ToolList">
-        <li *ngFor="let brand of brands">
-            <mat-checkbox [(ngModel)]="userContext.brandsChecked[brand.id]">{{brand.name}}</mat-checkbox>
-        </li>
-    </ul>
+<div class="desktop-filter-panel-overlay" [ngClass]="{isNotActive:  !filterOn}"   >
+    <div class="ToolFilter">
+        <div class="ToolFilterTitleContainer">
+            <span></span>
+            <h2>Filters</h2>
+            <mat-icon  role="button" id="ToolFilterExitButton" aria-label="ToolFilterExitButton" class="ToolFilterExitButton" (click)="toogleFilter()">close</mat-icon>
+        </div>
+        <ul class="ToolList">
+            <li *ngFor="let brand of brands">
+                <mat-checkbox [(ngModel)]="userContext.brandsChecked[brand.id]">{{brand.name}}</mat-checkbox>
+            </li>
+        </ul>
+    </div>
 </div>

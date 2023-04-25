@@ -17,6 +17,8 @@ export class ToolListComponent implements OnInit {
   loading = true;
   search = '';
 
+  filterOn = false;
+
   error: any;
   /**
    * Servicio de contexto de usuario
@@ -35,6 +37,9 @@ export class ToolListComponent implements OnInit {
     this.addTools();
   }
 
+  openFilter() {
+    this.filterOn = !this.filterOn;
+  }
 
   addTools() {
     this.apollo.use('tools').watchQuery({ // Realiza la consulta de autenticación
