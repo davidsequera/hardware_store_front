@@ -1,59 +1,41 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Apollo } from 'apollo-angular';
+import { GET_ALL_USERS } from 'src/app/graphql/graphql.users.queries';
 
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css']
 })
-export class UserListComponent {
+export class UserListComponent  implements OnInit{
+    users?: any[];
+    brands?: any[];
+    loading = true;
+    error: any;
 
-  constructor(){
+    constructor(private apollo: Apollo){
 
-  }
-  users: any[] = [
-    {
-        "id": "64408a20c1cdbee2aa183999",
-        "name": "Juan",
-        "last_name": "Perez",
-        "username": "juan",
-        "birthday": "2022-04-19T12:00:00.000+00:00",
-        "city_birth": "Bogota,Colombia",
-        "credentials": [
-            "64408a1fc1cdbee2aa183951"
-        ]
-    },
-    {
-        "id": "64408a20c1cdbee2aa18399a",
-        "name": "Jhon",
-        "last_name": "Ramirez",
-        "username": "jhon",
-        "birthday": "2022-04-19T12:00:00.000+00:00",
-        "city_birth": "Jerusalem,Cucuta",
-        "credentials": [
-            "64408a1fc1cdbee2aa183950"
-        ]
-    },
-    {
-        "id": "64408a20c1cdbee2aa18399c",
-        "name": "Sebastian",
-        "last_name": "Vergara",
-        "username": "sebas",
-        "birthday": "2003-04-05T12:00:00.000+00:00",
-        "city_birth": "Jerusalem,Cucuta",
-        "credentials": [
-            "64408a1fc1cdbee2aa183953"
-        ]
-    },
-    {
-        "id": "64408a20c1cdbee2aa18399b",
-        "name": "David",
-        "last_name": "Sequera",
-        "username": "david",
-        "birthday": "2003-04-05T12:00:00.000+00:00",
-        "city_birth": "Jerusalem,Cucuta",
-        "credentials": [
-            "64408a1fc1cdbee2aa183952"
-        ]
     }
-]
+    ngOnInit(): void {
+        this.addUsers()
+    }
+
+    addUsers(){
+        this.apollo.use('users').watchQuery({
+            query: GET_ALL_USERS
+        }).valueChanges
+        .subscribe({
+            next: ({ data }: any ) => { // Si la consulta es exitosa
+                console.log(data);
+                this.users = data?.getAllUsers;
+                this.loading = data.loading;
+                this.error = data.error;
+              },
+              error: (error) => { // Si la consulta falla
+                console.error('There was an error sending the query', error);
+                this.loading = false;
+                this.error = error;
+              }
+        })
+    }
 }

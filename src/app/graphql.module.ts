@@ -1,7 +1,9 @@
-import { NgModule } from '@angular/core';
+import { NgModule, inject } from '@angular/core';
 import { APOLLO_NAMED_OPTIONS, ApolloModule, NamedOptions } from 'apollo-angular';
 import { HttpLink } from 'apollo-angular/http';
 import { InMemoryCache } from '@apollo/client/core';
+import { setContext } from '@apollo/client/link/context';
+import { CookieService } from 'ngx-cookie-service';
 
 const urisMap = new Map<string, string>();
 urisMap.set('tools', 'http://localhost:8080/graphql');
@@ -13,16 +15,19 @@ urisMap.set('auth', 'http://localhost:8090/graphql');
  * @param httpLink Un objeto HttpLink de apollo-angular/http
  */
 export function createApollo(httpLink: HttpLink): NamedOptions {
+
   const clientsRecord: NamedOptions = {
     default: {
       cache: new InMemoryCache(),
-      link: httpLink.create({ uri: urisMap.get('tools') })
+      link: httpLink.create({ uri: urisMap.get('tools'),
+      withCredentials: true,
+    })
     }
   } ;
   urisMap.forEach((value, key) => {
     clientsRecord[key] = {
       cache: new InMemoryCache(),
-      link: httpLink.create({ uri: value })
+      link: httpLink.create({ uri: value , withCredentials: true})
     }
   })
   return clientsRecord;
@@ -42,5 +47,4 @@ export function createApollo(httpLink: HttpLink): NamedOptions {
   ],
 })
 export class GraphQLModule {}
-
 

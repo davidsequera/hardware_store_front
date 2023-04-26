@@ -1,4 +1,4 @@
-<div class="user-list-container">
+<div class="user-list-container" *ngIf="!loading">
     <app-search-bar></app-search-bar>
     <ul class="UserList" >
         <li *ngFor="let user of users">
@@ -14,3 +14,8 @@
         </li>
     </ul>
 </div>
+<ng-container *ngIf="loading">
+    <div class="UserLoading">
+        <app-micro-loading></app-micro-loading>
+    </div>
+</ng-container>

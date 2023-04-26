@@ -78,9 +78,8 @@ ngOnInit(): void {
         const tokenPair: TokenPair = data.createAccount;
         if(tokenPair){ // Si el token es válido
           this.apollo.client.resetStore();
-          this.userContextService.clearCookies();
-          this.userContextService.setCookies(tokenPair);
-          this.userContextService.setJWT(this.cookiesService.get('accessToken'));
+          this.userContextService.clearTokens();
+          this.userContextService.setTokens(tokenPair);
           this.router.navigate(['/tools']);
         } else { // Si el token no es válido
           this.errorMessage = 'El correo electrónico o la contraseña ingresados no son válidos.';

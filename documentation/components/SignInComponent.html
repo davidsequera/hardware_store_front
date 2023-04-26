@@ -691,8 +691,8 @@ export class SignInComponent implements OnInit {
         const TokenPair: TokenPair &#x3D; data.authenticate;
         if(TokenPair){ // Si el token es válido
           this.apollo.client.resetStore();
-          this.userContextService.clearCookies();
-          this.userContextService.setCookies(TokenPair);
+          this.userContextService.clearTokens();
+          this.userContextService.setTokens(TokenPair);
           this.userContextService.setJWT(this.cookiesService.get(&#x27;accessToken&#x27;));
           this.router.navigate([&#x27;/dashboard&#x27;]);
         } else { // Si el token no es válido

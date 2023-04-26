@@ -107,7 +107,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#clearCookies" >clearCookies</a>
+                                <a href="#clearTokens" >clearTokens</a>
                             </li>
                             <li>
                                 <a href="#clearJWT" >clearJWT</a>
@@ -116,7 +116,7 @@
                                 <a href="#logout" >logout</a>
                             </li>
                             <li>
-                                <a href="#setCookies" >setCookies</a>
+                                <a href="#setTokens" >setTokens</a>
                             </li>
                             <li>
                                 <a href="#setJWT" >setJWT</a>
@@ -203,16 +203,16 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="clearCookies"></a>
+                    <a name="clearTokens"></a>
                     <span class="name">
-                        <span ><b>clearCookies</b></span>
-                        <a href="#clearCookies"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>clearTokens</b></span>
+                        <a href="#clearTokens"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>clearCookies()</code>
+<code>clearTokens()</code>
                 </td>
             </tr>
 
@@ -320,16 +320,16 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="setCookies"></a>
+                    <a name="setTokens"></a>
                     <span class="name">
-                        <span ><b>setCookies</b></span>
-                        <a href="#setCookies"><span class="icon ion-ios-link"></span></a>
+                        <span ><b>setTokens</b></span>
+                        <a href="#setTokens"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>setCookies(tokenPair: <a href="../interfaces/TokenPair.html" target="_self">TokenPair</a>)</code>
+<code>setTokens(tokenPair: <a href="../interfaces/TokenPair.html" target="_self">TokenPair</a>)</code>
                 </td>
             </tr>
 
@@ -585,7 +585,7 @@ export class UserContextService {
   /**
    * Borra las cookies de acceso y refresco de la autenticación del usuario
    */
-  clearCookies(): void {
+  clearTokens(): void {
     this.cookieService.delete(&#x27;accessToken&#x27;);
     this.cookieService.delete(&#x27;refreshToken&#x27;);
   }
@@ -594,7 +594,7 @@ export class UserContextService {
    * Establece las cookies de acceso y refresco de la autenticación del usuario
    * @param tokenPair objeto que contiene el token de acceso y el token de refresco
    */
-  setCookies(tokenPair: TokenPair): void {
+  setTokens(tokenPair: TokenPair): void {
     this.cookieService.set(&#x27;accessToken&#x27;, tokenPair.accessToken.value);
     this.cookieService.set(&#x27;refreshToken&#x27;, tokenPair.refreshToken.value);
   }
