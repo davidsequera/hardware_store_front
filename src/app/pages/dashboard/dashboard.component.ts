@@ -15,7 +15,6 @@ export class DashboardComponent {
       birhtday: '1990-01-01',
       city_birth: 'Bogotá',
     }
-  
   }
 
 }

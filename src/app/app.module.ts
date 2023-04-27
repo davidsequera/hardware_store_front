@@ -33,10 +33,8 @@ import { MicroLoadingComponent } from './microcomponents/micro-loading/micro-loa
 import { PaginationIndicatorComponent } from './microcomponents/pagination-indicator/pagination-indicator.component';
 import { SearchBarComponent } from './microcomponents/search-bar/search-bar.component';
 
-// import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { FilterPipe} from './filter.pipe';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
@@ -73,7 +71,6 @@ import {MatButtonModule} from '@angular/material/button';
     MenuButtonComponent, 
     UserItemComponent, 
     MicroLoadingComponent,
-    FilterPipe,
     SearchBarComponent,
     PaginationIndicatorComponent
     
