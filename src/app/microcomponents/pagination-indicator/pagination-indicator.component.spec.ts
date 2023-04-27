@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { PaginationIndicatorComponent } from './pagination-indicator.component';
 
 describe('PaginationIndicatorComponent', () => {
@@ -11,13 +10,16 @@ describe('PaginationIndicatorComponent', () => {
       declarations: [ PaginationIndicatorComponent ]
     })
     .compileComponents();
+  });
 
+  beforeEach(() => {
     fixture = TestBed.createComponent(PaginationIndicatorComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should set page to the specified value when onPageChange is called', () => {
+    component.onPageChange(5);
+    expect(component.page).toEqual(5);
   });
 });

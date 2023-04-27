@@ -8,7 +8,4 @@ import { UserContextService } from 'src/app/services/context/user-context.servic
 })
 export class HeaderComponent  {
 
-  constructor(private userContext: UserContextService) {
-  }
-
 }
