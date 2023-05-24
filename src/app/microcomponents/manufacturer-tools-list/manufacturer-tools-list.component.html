@@ -1,0 +1,11 @@
+<div class="manufacturer-tools-list" *ngIf="!loading">
+  <h2>{{ manufacturer.name }}</h2>
+  <ul>
+    <li *ngFor="let tool of tools">
+      <app-tool-item [name]="tool.name" [description]="tool.description"></app-tool-item>
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="loading">Loading...</div>
+<div *ngIf="error">Error, please try again</div>
