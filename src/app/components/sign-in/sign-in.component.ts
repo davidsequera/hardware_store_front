@@ -48,8 +48,7 @@ export class SignInComponent implements OnInit {
    * Valida el formulario
    */
   validateForm(): boolean {
-    return true;
-    // return this.signInForm.valid;
+    return !this.signInForm.valid;
   }
 
   /**

@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { UserItemComponent } from './user-item.component';
 
 describe('UserItemComponent', () => {
@@ -8,8 +8,7 @@ describe('UserItemComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ UserItemComponent ]
-    })
-    .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -25,17 +24,17 @@ describe('UserItemComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-
-  it('should render the user information', () => {
-    const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.user-name').textContent).toContain('John');
-    expect(compiled.querySelector('.user-last-name').textContent).toContain('Doe');
-    expect(compiled.querySelector('.user-username').textContent).toContain('jdoe');
-    expect(compiled.querySelector('.user-birthday').textContent).toContain('2000-01-01');
-    expect(compiled.querySelector('.user-city-birth').textContent).toContain('New York');
-    expect(compiled.querySelector('.user-credentials').textContent).toContain('admin, user');
-  });
+  it('should render the user information', waitForAsync(() => {
+    fixture.whenStable().then(() => {
+      const compiled = fixture.nativeElement;
+      expect(compiled.querySelector('.lbl-toggle').textContent).toContain('John');
+      expect(compiled.querySelector('.user-last-name').textContent).toContain('Doe');
+      expect(compiled.querySelector('.user-username').textContent).toContain('jdoe');
+      expect(compiled.querySelector('.user-birthday').textContent).toContain('2000-01-01');
+      expect(compiled.querySelector('.user-city-birth').textContent).toContain('New York');
+      expect(compiled.querySelector('.user-credentials').textContent).toContain('admin, user');
+    });
+  }));
 });
+
+

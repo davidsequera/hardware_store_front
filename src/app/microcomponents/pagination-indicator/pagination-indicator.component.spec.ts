@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { PaginationIndicatorComponent } from './pagination-indicator.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu'; // Import MatMenuModule
 
 describe('PaginationIndicatorComponent', () => {
   let component: PaginationIndicatorComponent;
@@ -7,9 +9,10 @@ describe('PaginationIndicatorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PaginationIndicatorComponent ]
+      declarations: [ PaginationIndicatorComponent ],
+      imports: [ MatIconModule, MatMenuModule ], // Include MatMenuModule here
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
@@ -18,8 +21,12 @@ describe('PaginationIndicatorComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should set page to the specified value when onPageChange is called', () => {
-    component.onPageChange(5);
-    expect(component.page).toEqual(5);
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+
+  it('should change page', () => {
+    component.onPageChange(2);
+    expect(component.page).toEqual(2);
   });
 });

@@ -9,19 +9,19 @@ describe('ToolItemComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ ToolItemComponent ]
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ToolItemComponent);
     component = fixture.componentInstance;
-    component.id = '1';
     component.name = 'Hammer';
     component.description = 'A tool used for driving nails into wood or other materials';
     component.brand = 'Stanley';
     component.cities = ['New York', 'Los Angeles'];
     fixture.detectChanges();
   });
+
 
   it('should create', () => {
     expect(component).toBeTruthy();

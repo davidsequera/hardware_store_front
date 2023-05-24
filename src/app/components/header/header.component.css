@@ -1,8 +1,9 @@
 /*header*/
 .header{
+  position: fixed;
 	--header-title: 80%;
 	min-height: var(--Header-size);
-	width: auto;
+	width: 100vw;
 	display: flex;
 	flex-direction: row-reverse;
 	justify-content: center;
@@ -14,12 +15,19 @@
 /* .header:hover{
 	background-color: var(--color-A);
 } */
-.header-title{
+.header-logo{
 	width: auto;
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 	transition: 500ms width cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
+
+.header-logo img{
+  filter: invert();
+  width: 10vh;
+  height: auto;
+}
+
 .header-text{
 	margin: 5px;
 	cursor: pointer;
@@ -30,7 +38,7 @@
 	align-self: center;
 	color: var(--color-A);
 	transition: 500ms color cubic-bezier(0.6, -0.28, 0.735, 0.045);
-	
+
 }
 /* .header:hover .header-text{
 	color: var(--color-B);
@@ -38,6 +46,8 @@
 .header-log{
 	display: flex;
 	width: none;
+  right: 0;
+  position: fixed;
 }
 
 .header-logOut{

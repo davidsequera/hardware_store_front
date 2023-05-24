@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { MicroLoadingComponent } from './micro-loading.component';
 
 describe('MicroLoadingComponent', () => {
@@ -10,8 +9,10 @@ describe('MicroLoadingComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [ MicroLoadingComponent ]
     })
-    .compileComponents();
+      .compileComponents();
+  });
 
+  beforeEach(() => {
     fixture = TestBed.createComponent(MicroLoadingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

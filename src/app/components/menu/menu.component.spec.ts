@@ -1,32 +1,50 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { MenuComponent } from './menu.component';
-import { UserContextService } from 'src/app/services/context/user-context.service';
-import { of } from 'rxjs';
 import { Router } from '@angular/router';
+import { UserContextService } from 'src/app/services/context/user-context.service';
+import { MenuComponent } from './menu.component';
+import { MenuItemComponent } from 'src/app/microcomponents/menu-item/menu-item.component';
+import { MatIconModule } from '@angular/material/icon';
+import { of } from 'rxjs';
+import { Apollo } from 'apollo-angular';
 
 describe('MenuComponent', () => {
   let component: MenuComponent;
   let fixture: ComponentFixture<MenuComponent>;
-  let userContextService: jasmine.SpyObj<UserContextService>;
+  let router: Router;
+  let userContextService: UserContextService;
 
   beforeEach(async () => {
-    userContextService = jasmine.createSpyObj('UserContextService', ['logout']);
-    userContextService.jwt$ = of('test-jwt');
-
     await TestBed.configureTestingModule({
-      declarations: [ MenuComponent ],
-      imports: [ RouterTestingModule ],
+      declarations: [MenuComponent, MenuItemComponent], // Add MenuItemComponent here
+      imports: [MatIconModule],
       providers: [
-        { provide: UserContextService, useValue: userContextService }
-      ]
-    })
-    .compileComponents();
+        {
+          provide: Router,
+          useValue: {
+            navigate: jasmine.createSpy('navigate'),
+          },
+        },
+        {
+          provide: UserContextService,
+          useValue: {
+            jwt$: of('jwt_token'),
+            logout: jasmine.createSpy('logout'),
+          },
+        },
+        // Add the Apollo provider
+        {
+          provide: Apollo,
+          useValue: {}, // You can use an empty object or a mock/stub for Apollo
+        },
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {
     fixture = TestBed.createComponent(MenuComponent);
     component = fixture.componentInstance;
+    router = TestBed.inject(Router);
+    userContextService = TestBed.inject(UserContextService);
     fixture.detectChanges();
   });
 
@@ -34,19 +52,24 @@ describe('MenuComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should set jwt correctly', () => {
-    expect(component.jwt).toEqual('test-jwt');
+  it('should navigate to route', () => {
+    component.toPush('/route');
+    expect(router.navigate).toHaveBeenCalledWith(['/route']);
   });
 
-  it('should navigate to route when toPush is called', () => {
-    const router = TestBed.inject(Router);
-    const navigateSpy = spyOn(router, 'navigate');
-    component.toPush('test-route');
-    expect(navigateSpy).toHaveBeenCalledWith(['test-route']);
-  });
-
-  it('should call logout when logout is called', () => {
+  it('should logout', () => {
     component.logout();
     expect(userContextService.logout).toHaveBeenCalled();
   });
+
+  it('should update jwt on ngOnInit', () => {
+    component.ngOnInit();
+    expect(component.jwt).toEqual('jwt_token');
+  });
+
+  it('should handle MenuOn input', () => {
+    component.MenuOn = true;
+    expect(component.MenuOn).toEqual(true);
+  });
 });
+

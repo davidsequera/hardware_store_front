@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './pages/home/home.component';
 import { ToolsComponent } from './pages/tools/tools.component';
 import { LoginComponent } from './pages/login/login.component';
-import { SignupComponent } from './pages/signup/signup.component';
+
 import { ToolListComponent } from './components/tool-list/tool-list.component';
 import { ToolItemComponent } from './microcomponents/tool-item/tool-item.component';
 import { UserInputComponent } from './microcomponents/user-input/user-input.component';
@@ -39,6 +39,11 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
+import { HeroBannerComponent } from './microcomponents/hero-banner/hero-banner.component';
+import {CarouselModule} from "ngx-owl-carousel-o";
+import { ManufacturerToolsListComponent } from './microcomponents/manufacturer-tools-list/manufacturer-tools-list.component';
+
+
 
 /**
  * Módulo de la aplicación Angular que declara los componentes, servicios y otros módulos utilizados en la aplicación
@@ -49,7 +54,6 @@ import {MatButtonModule} from '@angular/material/button';
     HomeComponent, // Componente de la página de inicio
     ToolsComponent, // Componente de la página de herramientas
     LoginComponent, // Componente de la página de inicio de sesión
-    SignupComponent,  // Componente de la página de registro
     SignInComponent,  // Componente de la página de registro
     ToolListComponent,  // Componente de la lista de herramientas
     ToolItemComponent,  // Componente de la lista de herramientas
@@ -65,15 +69,17 @@ import {MatButtonModule} from '@angular/material/button';
     SignUpComponent,   // Componente de la página de registro
     ToolFilterComponent,  // Componente del filtro de herramientas
     CurvedElementComponent, // Componente del filtro de herramientas
-    CurvedElementComponent, 
-    DashboardComponent, 
-    UserListComponent, 
-    MenuButtonComponent, 
-    UserItemComponent, 
+    CurvedElementComponent,
+    DashboardComponent,
+    UserListComponent,
+    MenuButtonComponent,
+    UserItemComponent,
     MicroLoadingComponent,
     SearchBarComponent,
-    PaginationIndicatorComponent
-    
+    PaginationIndicatorComponent,
+    HeroBannerComponent,
+    ManufacturerToolsListComponent,
+
   ],
   /**
    * Módulos importados por el módulo de la aplicación
@@ -90,6 +96,7 @@ import {MatButtonModule} from '@angular/material/button';
     MatCheckboxModule,  // Módulo de checkbox de la aplicación
     MatMenuModule,  // Módulo de menú de la aplicación
     MatButtonModule,  // Módulo de botones de la aplicación
+    CarouselModule,
   ],
   providers: [UserContextService],  // Servicios de la aplicación
   bootstrap: [AppComponent] // Componente principal de la aplicación

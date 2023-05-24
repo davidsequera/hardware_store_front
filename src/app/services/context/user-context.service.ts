@@ -15,7 +15,7 @@ export class UserContextService {
   private jwtSubject = new BehaviorSubject<string | null>(this.cookieService.get('accessToken'));
   jwt$ = this.jwtSubject.asObservable(); // observable que emite el token JWT actual
 
-  
+
   brandsChecked: {[key: string]: boolean} = {}; // objeto que almacena las marcas que han sido seleccionadas en la lista de herramientas
 
   constructor(private router: Router, private apollo: Apollo,private cookieService: CookieService) {}
@@ -35,12 +35,17 @@ export class UserContextService {
    * @param tokenPair objeto que contiene el token de acceso y el token de refresco
    */
   setTokens(tokenPair: TokenPair): void {
-    this.cookieService.set('accessToken', tokenPair.accessToken.value.slice(7));
-    this.cookieService.set('refreshToken', tokenPair.refreshToken.value.slice(7));
-    this.jwtSubject.next(tokenPair.accessToken.value);
+    // You might need to adjust this to match your token's expiration.
+    // Here it's set to expire in 1 day.
+    const expiresIn = 1;
+
+    this.cookieService.set('accessToken', tokenPair.accessToken.value.replace("Bearer ", ""), expiresIn);
+    this.cookieService.set('refreshToken', tokenPair.refreshToken.value.replace("Bearer ", ""), expiresIn);
+    this.jwtSubject.next(tokenPair.accessToken.value.replace("Bearer ", ""));
   }
 
- 
+
+
   /**
    * Cierra la sesión del usuario borrando el token JWT actual y redirigiendo a la página de inicio de sesión
   */
