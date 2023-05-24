@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ErrorBannerComponent } from './error-banner.component';
+import { MatIconModule } from '@angular/material/icon'; // Import the MatIconModule
 
 describe('ErrorBannerComponent', () => {
   let component: ErrorBannerComponent;
@@ -7,9 +8,10 @@ describe('ErrorBannerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ErrorBannerComponent ]
+      declarations: [ ErrorBannerComponent ],
+      imports: [ MatIconModule ] // Include the MatIconModule
     })
-    .compileComponents();
+      .compileComponents();
   });
 
   beforeEach(() => {

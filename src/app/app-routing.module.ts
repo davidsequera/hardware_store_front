@@ -4,7 +4,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ToolsComponent } from './pages/tools/tools.component';
 import { UsersComponent } from './pages/users/users.component';
 import { LoginComponent } from './pages/login/login.component';
-import { SignupComponent } from './pages/signup/signup.component';
+import { SignupPage } from './pages/signup/signup-page.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: 'tools', component: ToolsComponent }, // ruta a la página de herramientas
   { path: 'users', component: UsersComponent }, // ruta a la página de usuarios
   { path: 'login', component: LoginComponent }, // ruta a la página de inicio de sesión
-  { path: 'signup', component: SignupComponent }, // ruta a la página de registro
+  { path: 'signup', component: SignupPage }, // ruta a la página de registro
   { path: 'dashboard', component: DashboardComponent },
   { path: '**', component: NotFoundComponent }, // ruta para cualquier otra URL no reconocida
 ];

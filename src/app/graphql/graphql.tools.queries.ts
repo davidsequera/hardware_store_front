@@ -17,6 +17,25 @@ const GET_ALL_TOOLS = gql`
 
   }
 `
+export const GET_TOOLS_BY_MANUFACTURER = gql`
+  query GetToolsByManufacturer($manufacturerId: ID!) {
+    getToolsByManufacturer(manufacturerId: $manufacturerId) {
+      id
+      name
+      description
+    }
+  }
+`
+export const GET_ALL_MANUFACTURERS = gql`
+  query GetAllManufacturers {
+    getAllManufacturers {
+      id
+      name
+    }
+  }
+`
+
+
 
 const GET_TOOLS = gql`
   query toolsPage($toolPageInput: toolPageInput!){
@@ -25,7 +44,7 @@ const GET_TOOLS = gql`
           name
           description
           brand{
-              
+
               name
           }
       }

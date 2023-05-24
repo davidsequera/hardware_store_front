@@ -1,18 +1,22 @@
 <div class="Page-container" id="Home">
-    <section id="HomeImg">
-        <div>
-            <h1 id="HomeImg-title">hephaus</h1>
-            <p id="HomeImg-text">Hardware Store</p>
-        </div>
-    </section>
-    <section id="HomeInfo">
-        <h1 id="HomeInfo-title">Welcome</h1>
-        <p  id="HomeInfo-text">hephaus is a modern hardware store that caters to DIY enthusiasts, builders, and homeowners looking for quality tools and supplies. We offer a wide range of products, from power tools and hand tools to lumber, paint, and hardware. Our store is designed to be a one-stop-shop for all your building and home improvement needs.
+  <section id="HomeImg">
+    <div>
+      <app-hero-banner></app-hero-banner>
+    </div>
+  </section>
+  <section>
+    <div>
+      <app-manufacturer-tools-list *ngFor="let manufacturer of manufacturers" [manufacturer]="manufacturer"></app-manufacturer-tools-list>
+    </div>
+  </section>
+  <section id="HomeInfo">
+    <h1 id="HomeInfo-title">Welcome</h1>
+    <p  id="HomeInfo-text">hephaus is a modern hardware store that caters to DIY enthusiasts, builders, and homeowners looking for quality tools and supplies. We offer a wide range of products, from power tools and hand tools to lumber, paint, and hardware. Our store is designed to be a one-stop-shop for all your building and home improvement needs.
 
-            <br/>At hephaus, we pride ourselves on offering high-quality products at competitive prices, while also providing exceptional customer service. Our knowledgeable staff are always available to assist you with product recommendations, project advice, and any questions you may have. We also offer a variety of services, including tool rental, blade sharpening, and key cutting.
-            
-            <br/>In addition to our brick-and-mortar store, hephaus also has an online store where you can browse and purchase our products from the comfort of your own home. We offer free local delivery and a hassle-free return policy to ensure our customers have a seamless shopping experience.
-            
-            <br/>Whether you're a seasoned DIY expert or just starting out on your home improvement journey, hephaus has everything you need to tackle your next project. Visit us in-store or online and discover the endless possibilities of building and creating.</p>
-    </section>
+      <br/>At hephaus, we pride ourselves on offering high-quality products at competitive prices, while also providing exceptional customer service. Our knowledgeable staff are always available to assist you with product recommendations, project advice, and any questions you may have. We also offer a variety of services, including tool rental, blade sharpening, and key cutting.
+
+      <br/>In addition to our brick-and-mortar store, hephaus also has an online store where you can browse and purchase our products from the comfort of your own home. We offer free local delivery and a hassle-free return policy to ensure our customers have a seamless shopping experience.
+
+      <br/>Whether you're a seasoned DIY expert or just starting out on your home improvement journey, hephaus has everything you need to tackle your next project. Visit us in-store or online and discover the endless possibilities of building and creating.</p>
+  </section>
 </div>

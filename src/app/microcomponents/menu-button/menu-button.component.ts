@@ -13,7 +13,7 @@ import { UserContextService } from 'src/app/services/context/user-context.servic
  * Clase que representa el botón de la cuenta del usuario
  */
 export class MenuButtonComponent implements OnInit {
-  
+
   jwt: string | null = null;
   MenuOn = false; // indica si el menú de la cuenta del usuario está abierto
 
@@ -50,5 +50,6 @@ export class MenuButtonComponent implements OnInit {
   onWindowResize(event: Event) {
     this.isMinWidth768px = window.innerWidth >= 768;
   }
+
 
 }
