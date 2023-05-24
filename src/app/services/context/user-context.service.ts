@@ -35,8 +35,8 @@ export class UserContextService {
    * @param tokenPair objeto que contiene el token de acceso y el token de refresco
    */
   setTokens(tokenPair: TokenPair): void {
-    this.cookieService.set('accessToken', tokenPair.accessToken.value);
-    this.cookieService.set('refreshToken', tokenPair.refreshToken.value);
+    this.cookieService.set('accessToken', tokenPair.accessToken.value.slice(7));
+    this.cookieService.set('refreshToken', tokenPair.refreshToken.value.slice(7));
     this.jwtSubject.next(tokenPair.accessToken.value);
   }
 

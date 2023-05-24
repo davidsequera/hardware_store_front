@@ -5,10 +5,12 @@ import { InMemoryCache } from '@apollo/client/core';
 import { setContext } from '@apollo/client/link/context';
 import { CookieService } from 'ngx-cookie-service';
 
+const ip = 'localhost';
+
 const urisMap = new Map<string, string>();
-urisMap.set('tools', 'http://localhost:8080/graphql');
-urisMap.set('users', 'http://localhost:8085/graphql');
-urisMap.set('auth', 'http://localhost:8090/graphql');
+urisMap.set('tools', `http://${ip}:8080/graphql`);
+urisMap.set('users', `http://${ip}:8085/graphql`);
+urisMap.set('auth', `http://${ip}:8090/graphql`);
 
 /**
  * Función que devuelve la configuración de ApolloClient
