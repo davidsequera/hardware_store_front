@@ -8,7 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './pages/home/home.component';
 import { ToolsComponent } from './pages/tools/tools.component';
 import { LoginComponent } from './pages/login/login.component';
-
 import { ToolListComponent } from './components/tool-list/tool-list.component';
 import { ToolItemComponent } from './microcomponents/tool-item/tool-item.component';
 import { UserInputComponent } from './microcomponents/user-input/user-input.component';
@@ -40,7 +39,6 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import { HeroBannerComponent } from './microcomponents/hero-banner/hero-banner.component';
-import {CarouselModule} from "ngx-owl-carousel-o";
 import { ManufacturerToolsListComponent } from './microcomponents/manufacturer-tools-list/manufacturer-tools-list.component';
 
 
@@ -96,7 +94,6 @@ import { ManufacturerToolsListComponent } from './microcomponents/manufacturer-t
     MatCheckboxModule,  // Módulo de checkbox de la aplicación
     MatMenuModule,  // Módulo de menú de la aplicación
     MatButtonModule,  // Módulo de botones de la aplicación
-    CarouselModule,
   ],
   providers: [UserContextService],  // Servicios de la aplicación
   bootstrap: [AppComponent] // Componente principal de la aplicación
