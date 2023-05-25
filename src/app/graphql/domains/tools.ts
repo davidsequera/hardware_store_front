@@ -91,7 +91,11 @@ interface UpdateCityInput {
 
 interface ToolPage {
     length: number;
+    pages: number;
     tools: Tool[];
     total: number;
 }
+
+
+export {Tool, City, Brand, ToolPageInput, CreateToolInput, UpdateToolInput, CreateBrandInput, UpdateBrandInput, CreateCityInput, UpdateCityInput, ToolPage}
     

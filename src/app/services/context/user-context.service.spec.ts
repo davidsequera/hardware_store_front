@@ -1,14 +1,14 @@
 import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
 import { of } from 'rxjs';
 import { TokenPair, TokenType } from 'src/app/graphql/domains/auth';
 import { UserContextService } from './user-context.service';
 import { Apollo } from 'apollo-angular';
+import Cookies from 'universal-cookie';
 
 describe('UserContextService', () => {
   let service: UserContextService;
-  let cookieService: CookieService;
+  let cookieService: Cookies;
   let router: Router;
   let apollo: Apollo;
 
@@ -19,14 +19,13 @@ describe('UserContextService', () => {
     TestBed.configureTestingModule({
       providers: [
         UserContextService,
-        CookieService,
         { provide: Router, useValue: routerSpy },
         { provide: Apollo, useValue: apolloSpy }
       ],
     });
 
     service = TestBed.inject(UserContextService);
-    cookieService = TestBed.inject(CookieService);
+    cookieService = TestBed.inject(Cookies);
     router = TestBed.inject(Router);
     apollo = TestBed.inject(Apollo);
   });
@@ -37,7 +36,7 @@ describe('UserContextService', () => {
 
   it('should set and clear JWT', () => {
     const jwt = 'sample_jwt_token';
-    service.setTokens({accessToken: {type: TokenType.ACCESS, value: jwt}, refreshToken: {type: TokenType.REFRESH, value: 'refresh_token'}});
+    service.setTokens({accessToken: {type: TokenType.ACCESS, value: jwt, expiration: new Date().getTime()}, refreshToken: {type: TokenType.REFRESH, value: 'refresh_token', expiration: new Date().getTime()}});
     service.jwt$.subscribe((token) => {
       expect(token).toBe(jwt);
     });
@@ -49,8 +48,8 @@ describe('UserContextService', () => {
 
   it('should set and clear cookies', () => {
     const tokenPair: TokenPair = {
-      accessToken: { type: TokenType.ACCESS, value: 'access_token' },
-      refreshToken: { type: TokenType.REFRESH, value: 'refresh_token' },
+      accessToken: { type: TokenType.ACCESS, value: 'access_token', expiration: new Date().getTime() },
+      refreshToken: { type: TokenType.REFRESH, value: 'refresh_token', expiration: new Date().getTime() },
     };
 
     service.setTokens(tokenPair);

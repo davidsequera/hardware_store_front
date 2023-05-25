@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Apollo } from 'apollo-angular';
-import { CookieService } from 'ngx-cookie-service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserContextService } from 'src/app/services/context/user-context.service';
 import { AUTHENTICATE } from 'src/app/graphql/graphql.auth.queries';
@@ -30,7 +29,6 @@ export class SignInComponent implements OnInit {
   constructor(private apollo: Apollo,
               private router: Router,
               private userContextService: UserContextService,
-              private cookiesService: CookieService,
               private fb: FormBuilder,
               ) {}
 
@@ -69,10 +67,10 @@ export class SignInComponent implements OnInit {
     .subscribe({ // Suscribe a los resultados de la consulta
       next: ({ data }: any ) => { // Si la consulta es exitosa
         console.log('Match', data);
-        const TokenPair: TokenPair = data.authenticate;
-        if(TokenPair){ // Si el token es válido
+        const tokenPair: TokenPair = data.authenticate;
+        if(tokenPair){ // Si el token es válido
           this.userContextService.clearTokens();
-          this.userContextService.setTokens(TokenPair);
+          this.userContextService.setTokens(tokenPair);
           this.router.navigate(['/tools']);
         } else { // Si el token no es válido
           this.errorMessage = 'El correo electrónico o la contraseña ingresados no son válidos.';

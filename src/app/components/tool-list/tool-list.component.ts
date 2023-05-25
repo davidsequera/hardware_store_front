@@ -3,6 +3,7 @@ import { Apollo } from 'apollo-angular';
 import { Subscription } from 'rxjs';
 import { GET_ALL_TOOLS, GET_TOOL_BY_NAME } from 'src/app/graphql/graphql.tools.queries';
 import { UserContextService } from 'src/app/services/context/user-context.service';
+import { ToolPage, ToolPageInput } from 'src/app/graphql/domains/tools';
 
 @Component({
   selector: 'app-tool-list',
@@ -10,6 +11,15 @@ import { UserContextService } from 'src/app/services/context/user-context.servic
   styleUrls: ['./tool-list.component.css']
 })
 export class ToolListComponent implements OnInit, OnDestroy {
+  ToolPageInput: ToolPageInput ={
+    page: 0,
+    size: 20
+  }
+  toolPage?: ToolPage
+  currentPage = 1;
+  totalPages = 1;
+  pageSize = 20;
+
   tools?: any[];
   brands?: any[];
   loading = true;
@@ -17,9 +27,6 @@ export class ToolListComponent implements OnInit, OnDestroy {
   filterOn = false;
   error: any;
   searchRequestSubscriptions: Subscription[] = [];
-  currentPage = 1;
-  totalPages = 1;
-  pageSize = 20;
 
   constructor(private apollo: Apollo, private userContext: UserContextService) {}
 

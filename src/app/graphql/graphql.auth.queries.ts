@@ -9,10 +9,12 @@ const AUTHENTICATE = gql`
       accessToken{
         type
         value
+        expiration
       }
       refreshToken{
         type
         value
+        expiration
       }
     }
   }
@@ -26,6 +28,7 @@ const REFRESH = gql`
     accessToken(tokenString: $token) {
       type
       value
+      expiration
     }
   }
 `
@@ -39,10 +42,12 @@ const CREATE_CREDENTIALS = gql`
       accessToken{
         type
         value
+        expiration
       }
       refreshToken{
         type
         value
+        expiration
       }
     }
   }

@@ -16,6 +16,7 @@ enum TokenType {
 interface Token {
     type: TokenType;
     value: string;
+    expiration: number;
 }
 
 interface CredentialType {

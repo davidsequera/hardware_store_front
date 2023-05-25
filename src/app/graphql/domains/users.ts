@@ -1,18 +1,3 @@
-// interface Query {
-//     getUsers: User[];
-//     getAllUsers: User[];
-//     getById(id: string): User;
-//     getByEmail(email: string): User;
-//}
-  
-// interface Mutation {
-//     createUser(input: CreateUserInput): User;
-//     updateUser(input: UpdateUserInput): User;
-//     deleteUser(id: string): User;
-//}
-
-
-
 interface User {
     id?: string;
     name?: string;
@@ -41,3 +26,5 @@ interface UpdateUserInput {
     city_birth?: string;
 }
   
+
+export {User, CreateUserInput, UpdateUserInput}

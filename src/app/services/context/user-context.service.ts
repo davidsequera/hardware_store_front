@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Apollo } from 'apollo-angular';
-import { CookieService } from 'ngx-cookie-service';
+import Coookies from 'universal-cookie';
 import { BehaviorSubject } from 'rxjs';
 import { TokenPair } from 'src/app/graphql/domains/auth';
 
@@ -12,20 +12,22 @@ import { TokenPair } from 'src/app/graphql/domains/auth';
   providedIn: 'root' // indica que este servicio está disponible en toda la aplicación
 })
 export class UserContextService {
+
+  cookieService = new Coookies(); // servicio de cookies
   private jwtSubject = new BehaviorSubject<string | null>(this.cookieService.get('accessToken'));
   jwt$ = this.jwtSubject.asObservable(); // observable que emite el token JWT actual
 
 
   brandsChecked: {[key: string]: boolean} = {}; // objeto que almacena las marcas que han sido seleccionadas en la lista de herramientas
 
-  constructor(private router: Router, private apollo: Apollo,private cookieService: CookieService) {}
+  constructor(private router: Router, private apollo: Apollo) {}
 
   /**
    * Borra las cookies de acceso y refresco de la autenticación del usuario
    */
   clearTokens(): void {
-    this.cookieService.delete('accessToken');
-    this.cookieService.delete('refreshToken');
+    this.cookieService.remove('accessToken');
+    this.cookieService.remove('refreshToken');
     this.apollo.client.resetStore();
     this.jwtSubject.next(null);
   }
@@ -35,12 +37,8 @@ export class UserContextService {
    * @param tokenPair objeto que contiene el token de acceso y el token de refresco
    */
   setTokens(tokenPair: TokenPair): void {
-    // You might need to adjust this to match your token's expiration.
-    // Here it's set to expire in 1 day.
-    const expiresIn = 1;
-
-    this.cookieService.set('accessToken', tokenPair.accessToken.value.replace("Bearer ", ""), expiresIn);
-    this.cookieService.set('refreshToken', tokenPair.refreshToken.value.replace("Bearer ", ""), expiresIn);
+    this.cookieService.set('accessToken', tokenPair.accessToken.value.replace("Bearer ", ""), {expires: new Date(tokenPair.accessToken.expiration)} );
+    this.cookieService.set('refreshToken', tokenPair.refreshToken.value.replace("Bearer ", ""), {expires: new Date(tokenPair.refreshToken.expiration)});
     this.jwtSubject.next(tokenPair.accessToken.value.replace("Bearer ", ""));
   }
 
