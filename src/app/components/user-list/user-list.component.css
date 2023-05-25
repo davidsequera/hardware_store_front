@@ -1,16 +1,44 @@
-.user-list-container{
-    width: 100%;
+.user-list-container {
+  width: 100%;
 }
 
-.UserList{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.UserList {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.UserLoading{
-    display: flex;
-    height: 50vh;
-    justify-content: center;
-    align-items: center;
+.UserLoading {
+  display: flex;
+  height: 50vh;
+  justify-content: center;
+  align-items: center;
+}
+
+form.create-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+form.create-form input {
+  font-size: 20px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+button {
+  font-size: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: orange;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: darkorange;
 }

@@ -9,125 +9,114 @@ import { UserContextService } from 'src/app/services/context/user-context.servic
   templateUrl: './tool-list.component.html',
   styleUrls: ['./tool-list.component.css']
 })
-/**
- * Componente que muestra la lista de herramientas
- */
 export class ToolListComponent implements OnInit, OnDestroy {
   tools?: any[];
   brands?: any[];
   loading = true;
   search = '';
-
   filterOn = false;
-
-  
   error: any;
   searchRequestSubscriptions: Subscription[] = [];
-  /**
-   * Servicio de contexto de usuario
-   */
+  currentPage = 1;
+  totalPages = 1;
+  pageSize = 20;
 
-  /**
-   * Constructor
-   * @param userContext Servicio de contexto de usuario
-   */
-  constructor(private apollo: Apollo, private userContext: UserContextService) {
-    this.apollo = apollo;
-    this.userContext = userContext;
-  }
+  constructor(private apollo: Apollo, private userContext: UserContextService) {}
 
   ngOnInit(): void {
-    this.addTools();
-    this.tools;
-
+    this.getTools();
   }
 
   ngOnDestroy(): void {
-      
+    this.cancelPendingRequests();
   }
 
   openFilter() {
     this.filterOn = !this.filterOn;
   }
 
-  addTools() {
+  getTools() {
+    const variables = {
+      page: this.currentPage,
+      size: this.pageSize
+    };
 
-    this.apollo.use('tools').watchQuery({ // Realiza la consulta de autenticación
-      query: GET_ALL_TOOLS,
-    })
-    .valueChanges
-    .pipe(
-      // debounceTime(1000),
-      // distinctUntilChanged(),
-      // switchMap(({data}: any) => data),
-    ).subscribe({ // Suscribe a los resultados de la consulta
-          next: ({data}: any ) => { // Si la consulta es exitosa
-            console.log(data);
-            this.tools = data?.getAllTools;
-            this.brands = data.getBrands;
-            this.loading = data.loading;
-            this.error = data.error;
-          },
-          error: (error) => { // Si la consulta falla
-            console.error('There was an error sending the query', error);
-            this.loading = false;
-            this.error = error;
-          }})
-
+    this.apollo
+      .use('tools')
+      .watchQuery({
+        query: GET_ALL_TOOLS,
+        variables
+      })
+      .valueChanges.subscribe({
+      next: ({ data }: any) => {
+        this.tools = data?.getAllTools;
+        this.brands = data.getBrands;
+        this.loading = data.loading;
+        this.error = data.error;
+        this.totalPages = Math.ceil(data.totalCount / this.pageSize);
+      },
+      error: (error) => {
+        console.error('There was an error sending the query', error);
+        this.loading = false;
+        this.error = error;
+      }
+    });
   }
 
-
   isToolfromBrand(tool: any): boolean {
-    //  check if any brand is selected
-    if(Object.values(this.userContext.brandsChecked).includes(true)) {
+    if (Object.values(this.userContext.brandsChecked).includes(true)) {
       return this.userContext.brandsChecked[tool.brand.id];
     }
     return true;
   }
 
-
   cancelPendingRequests() {
-    this.searchRequestSubscriptions.forEach(sub => sub.unsubscribe());
+    this.searchRequestSubscriptions.forEach((sub) => sub.unsubscribe());
   }
+
   onSeachbarChange(name: string) {
     this.search = name;
+    this.currentPage = 1;
     this.cancelPendingRequests();
-    console.log("[SearchTerm]",this.search);
-    if(this.search === '') {
-      this.addTools();
+
+    if (this.search === '') {
+      this.getTools();
       return;
     }
-    const apiSubscription = this.apollo.use('tools').watchQuery({ // Realiza la consulta de autenticación})
-      query: GET_TOOL_BY_NAME,
-      variables: {
-        "toolPageInput": {
-            "page": 2,
-            "size": 20
-        },
-        "search": this.search 
-      }
-    })
-    .valueChanges
-    .subscribe({ // Suscribe a los resultados de la consulta
-      next: ( {data}: any ) => { // Si la consulta es exitosa
-        console.log(data);
-        this.tools = data?.getToolsByName;
-        this.loading = data.loading;
-        this.error = data.error;
+
+    const variables = {
+      toolPageInput: {
+        page: this.currentPage,
+        size: this.pageSize
       },
-      error: (error) => { // Si la consulta falla
-        console.error('There was an error sending the query', error);
-        this.loading = false;
-        this.error = error;
-      }})
+      search: this.search
+    };
+
+    const apiSubscription = this.apollo
+      .use('tools')
+      .watchQuery({
+        query: GET_TOOL_BY_NAME,
+        variables
+      })
+      .valueChanges.subscribe({
+        next: ({ data }: any) => {
+          this.tools = data?.getToolsByName;
+          this.loading = data.loading;
+          this.error = data.error;
+          this.totalPages = Math.ceil(data.totalCount / this.pageSize);
+        },
+        error: (error) => {
+          console.error('There was an error sending the query', error);
+          this.loading = false;
+          this.error = error;
+        }
+      });
 
     this.searchRequestSubscriptions.push(apiSubscription);
   }
 
-
-  /**
-   * Lista de marcas de herramientas
-   * Cada elemento es un objeto con las propiedades:
-   * - name: nombre de la marca
-   */
+  onPageChange(page: number) {
+    this.currentPage = page;
+    this.getTools();
+  }
 }

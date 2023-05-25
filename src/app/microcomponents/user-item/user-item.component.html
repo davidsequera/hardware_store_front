@@ -1,32 +1,58 @@
-<div class="UserItem">  
-    <input id="{{id}}" class="toggle" type="checkbox">
-    <label for="{{id}}" class="lbl-toggle" tabindex="0">{{name}}</label>
-    <div class="collapsible-content">
-        <div class="content-inner">
-            <div>
-                <p>{{name+' '+last_name}}</p>
-            </div>            
-            <div>
-                <p>{{'id: '+id}}</p>
-            </div>
-            <div>
-                <p>{{'name: '+name}}</p>
-           </div>
-           <div>
-                <p>{{'last_name: '+last_name}}</p>
-           </div>
-           <div>
-                <p>{{'username: '+username}}</p>
-           </div>
-           <div>
-                <p>{{'birthday: '+birthday}}</p>
-           </div>
-           <div>
-                <p>{{'city_birth: '+city_birth}}</p>
-           </div>
-           <div>
-                <p>{{'credentials: '+credentials}}</p>
-           </div>
-        </div>
+<div class="UserItem">
+  <input
+    id="{{ id }}"
+    class="toggle"
+    type="checkbox"
+    [disabled]="isEditMode"
+  >
+  <label
+    for="{{ id }}"
+    class="lbl-toggle"
+    tabindex="0"
+    [hidden]="isEditMode"
+  >
+    {{ name }}
+  </label>
+  <div class="collapsible-content">
+    <div class="content-inner">
+      <div>
+        <p>{{ name + ' ' + last_name }}</p>
+      </div>
+      <div>
+        <p>{{ 'id: ' + id }}</p>
+      </div>
+      <div>
+        <p>{{ 'name: ' + name }}</p>
+      </div>
+      <div>
+        <p>{{ 'last_name: ' + last_name }}</p>
+      </div>
+      <div>
+        <p>{{ 'username: ' + username }}</p>
+      </div>
+      <div>
+        <p>{{ 'birthday: ' + birthday }}</p>
+      </div>
+      <div>
+        <p>{{ 'city_birth: ' + city_birth }}</p>
+      </div>
+      <div>
+        <p>{{ 'credentials: ' + credentials }}</p>
+      </div>
+      <div *ngIf="isEditMode">
+        <input [(ngModel)]="updatedUser.name" (dblclick)="updateField('name')" placeholder="Enter name">
+        <input [(ngModel)]="updatedUser.last_name" (dblclick)="updateField('last_name')" placeholder="Enter last name">
+        <input [(ngModel)]="updatedUser.username" (dblclick)="updateField('username')" placeholder="Enter username">
+        <input [(ngModel)]="updatedUser.birthday" (dblclick)="updateField('birthday')" placeholder="Enter birthday">
+        <input [(ngModel)]="updatedUser.city_birth" (dblclick)="updateField('city_birth')" placeholder="Enter city of birth">
+        <input [(ngModel)]="updatedUser.credentials" (dblclick)="updateField('credentials')" placeholder="Enter credentials">
+        <button (click)="cancelUpdateField()">Cancel</button>
+        <button (click)="updateUser.emit(updatedUser)">Update</button>
+      </div>
+      <div *ngIf="!isEditMode">
+        <button (click)="doubleClickField('name')">Edit</button>
+        <button (click)="deleteCurrentUser()">Delete</button>
+      </div>
     </div>
+  </div>
 </div>
