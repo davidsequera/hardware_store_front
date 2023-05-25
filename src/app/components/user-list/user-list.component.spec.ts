@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { Apollo } from 'apollo-angular';
 import { UserListComponent } from './user-list.component';
 import { of } from 'rxjs';
-import { MicroLoadingComponent } from 'src/app/microcomponents/micro-loading/micro-loading.component'; // Import MicroLoadingComponent
+import { MicroLoadingComponent } from 'src/app/microcomponents/micro-loading/micro-loading.component';
 
 describe('UserListComponent', () => {
   let component: UserListComponent;
@@ -11,12 +11,14 @@ describe('UserListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserListComponent, MicroLoadingComponent ], // Add MicroLoadingComponent here
+      declarations: [UserListComponent, MicroLoadingComponent],
       providers: [
-        { provide: Apollo, useValue: { use: () => ({ watchQuery: () => ({ valueChanges: of({}) }) }) } },
-      ]
-    })
-      .compileComponents();
+        {
+          provide: Apollo,
+          useValue: { use: () => ({ watchQuery: () => ({ valueChanges: of({}) }) }) },
+        },
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {

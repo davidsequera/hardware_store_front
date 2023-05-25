@@ -4,7 +4,7 @@
         <img alt="logo PMP" src="{{ logo }}" class="SignInComponent_User-logo" />
         <app-user-input id="user_input_user" title="Email" type="email" name="email" [parentFormGroup]="signInForm"> </app-user-input>
         <app-user-input id="user_input_password" title="Password" type="password" name="password" [parentFormGroup]="signInForm"></app-user-input>
-        <button class="button" id="SignInComponent_button" [disabled]="!validateForm()">Sign In</button>
+        <button class="button" id="SignInComponent_button">Sign In</button>
         <app-error-banner *ngIf="error"></app-error-banner>
       </form>
       <a class="SignInComponent_SingUp" routerLink="/signup">Registrate</a>

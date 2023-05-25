@@ -55,6 +55,8 @@ export class SignInComponent implements OnInit {
    * Envia el formulario
    */
   onSubmit(): void {
+    console.log('Formulario enviado');
+
     const credential: CredentialType = { // Crea el objeto de credenciales
       email: this.signInForm.value.email,
       password: this.signInForm.value.password
