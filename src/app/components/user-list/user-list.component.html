@@ -21,7 +21,7 @@
         [birthday]="user.birthday"
         [city_birth]="user.city_birth"
         [credentials]="user.credentials"
-        (updateUser)="updateUser($event)"
+        (updateUser)="updateUser(user.id, $event)"
         (deleteUser)="deleteUser(user.id)"
       ></app-user-item>
     </li>

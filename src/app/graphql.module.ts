@@ -13,11 +13,11 @@ urisMap.set('users', `http://${ip}:8085/graphql`);
 urisMap.set('auth', `http://${ip}:8090/graphql`);
 
 
-const auth = setContext(async (_, { headers }) => {
+const auth = setContext((operation, context) => {
 
   // get token from cookies
   // const token = inject(CookieService).get('accessToken');
-  const token = "eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiI3NWNiZmFhYy1mMzA3LTRlOWQtYTFhMC1mMzBhMGUyOTlhNDkiLCJzdWIiOiI2NDRmMWY3ZjliZmY1NDZlOGQ2NjUxZDIiLCJlbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsInR5cGUiOiJBQ0NFU1MiLCJhdXRob3JpdGllcyI6IlJPTEVfVVNFUiIsImlhdCI6MTY4NDk3MjI1MCwiZXhwIjoxNjg0OTc1ODUwfQ.HgLUr5JdwgbTjHspMCno90DvD-AZPC5KP5nhZY7PBAYbXjDrUjLqiUKB7sqSLTMOHxFMa7QtxQVQnWvq4zNMqA"
+  const token = "eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiI4MGU1NjBlNS1iMTYyLTQ1MjMtYjMwMC1kN2E4MTM0NGVlOGUiLCJzdWIiOiI2NDRmMWY3ZjliZmY1NDZlOGQ2NjUxZDEiLCJlbWFpbCI6InVzZXJAZ21haWwuY29tIiwidHlwZSI6IkFDQ0VTUyIsImF1dGhvcml0aWVzIjoiUk9MRV9VU0VSIiwiaWF0IjoxNjg0OTc1Mjg0LCJleHAiOjE2ODQ5Nzg4ODR9.waw67wq0lcVQxodxiDkoSC4f7bhkeHtM578mvx_dv12UyISZUt6a1PnJk2L3Ke3Ah22fYHZLvV83nmuiYN2LUA"
   return {
     headers: {
       Authorization: `Bearer ${token}`,

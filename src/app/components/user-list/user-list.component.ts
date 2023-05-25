@@ -43,7 +43,8 @@ export class UserListComponent implements OnInit {
     });
   }
 
-  updateUser(userInput: any) {
+  updateUser(id:any,userInput: any) {
+    userInput.id = id;
     this.apollo
       .use('users')
       .mutate({
