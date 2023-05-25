@@ -48,7 +48,7 @@ export class SignInComponent implements OnInit {
    * Valida el formulario
    */
   validateForm(): boolean {
-    return !this.signInForm.valid;
+    return this.signInForm.valid;
   }
 
   /**
@@ -63,9 +63,6 @@ export class SignInComponent implements OnInit {
     this.apollo.use('auth').mutate({ // Realiza la consulta de autenticación
       mutation: AUTHENTICATE,
       variables: { credential },
-      context: { // Add the context object with the uriKey
-        uriKey: 'auth',
-      },
     })
     .subscribe({ // Suscribe a los resultados de la consulta
       next: ({ data }: any ) => { // Si la consulta es exitosa
@@ -85,75 +82,6 @@ export class SignInComponent implements OnInit {
       }
     })
   }
-
-
-
-/// TEMPORAL
-
-
-  // todos: any[] = [];
-  // error: any;
-
-  // todoForm = new FormGroup({
-  //   name: new FormControl('', Validators.required),
-  //   description: new FormControl('', Validators.required)
-  // });
-
-  // addTodo() {
-  //   // apollo graphql query to add todo
-  //   this.apollo.mutate({
-  //     mutation: ADD_TODO,
-  //     variables: {
-  //       name: this.todoForm.value.name,
-  //       description: this.todoForm.value.description,
-  //     },
-  //     refetchQueries: [{
-  //       query: GET_TODOS
-  //     }]
-  //   }).subscribe(({data}: any) => {
-  //     this.todos = data.addTodo;
-  //     this.todoForm.reset();
-  //   }
-  //   , (error) => {
-  //     this.error = error;
-  //   }
-  //   );
-
-  // }
-
-  // deleteTodo(id: string) {
-  //   // apollo graphql query to delete todo
-  //   this.apollo.mutate({
-  //     mutation: DELETE_TODO,
-  //     variables: {
-  //       id: id,
-  //     },
-  //     refetchQueries: [{
-  //       query: GET_TODOS
-  //     }]
-  //   }).subscribe(({data}: any) => {
-  //     this.todos = data.deleteTodo;
-  //   }
-  //   , (error) => {
-  //     this.error = error;
-  //   }
-  //   );
-  // }
-
-
-  // ngOnInit(): void {
-  //   this.apollo.watchQuery({
-  //     query: GET_TODOS
-  //   }).valueChanges.subscribe(({ data, error }: any) => {
-  //     this.todos = data.todos;
-  //     this.error = error;
-  // }
-  // );
-  // }
-
-
-
-
 
 }
 
