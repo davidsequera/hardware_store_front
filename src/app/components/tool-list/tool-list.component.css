@@ -6,7 +6,7 @@
 
 .filterButton-container{
     display: flex;
-    justify-content:right;
+    justify-content: space-between;
     align-items: center;
     margin: 1rem 2rem;
 }
@@ -42,19 +42,40 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-
+    height: 100%;
+    margin: 0;
 }
+
 .ToolsLoading{
     display: flex;
-    height: 50vh;
     justify-content: center;
     align-items: center;
 }
 
+.no-tools{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.no-tools h2{
+    font-size: 2rem;
+    margin: 0.5rem;
+}
+
+.no-tools-icon{
+    font-size: 7rem;
+    width: fit-content;
+    height: fit-content;
+    animation: rotate 10s ease-in-out infinite;
+}
+
 @media screen and (min-width: 768px){
-    .ToolList{
-        margin: auto;
-        padding: auto;
+    .ToolsLayout{
+        margin: 0 10rem;
     }
     .filter-button {
         font-size: 2.5rem;

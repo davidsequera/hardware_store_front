@@ -1,16 +1,6 @@
 <div class="user-list-container" *ngIf="!loading">
-  <app-search-bar></app-search-bar>
-  <button (click)="showCreateForm = true">Create User</button>
-  <form class="create-form" *ngIf="showCreateForm" (ngSubmit)="createUser(newUser)">
-    <input [(ngModel)]="newUser.name" placeholder="Name" required>
-    <input [(ngModel)]="newUser.last_name" placeholder="Last Name" required>
-    <input [(ngModel)]="newUser.username" placeholder="Username" required>
-    <input [(ngModel)]="newUser.birthday" placeholder="Birthday" required>
-    <input [(ngModel)]="newUser.city_birth" placeholder="City of Birth" required>
-    <input [(ngModel)]="newUser.credentials" placeholder="Credentials" required>
-    <button type="submit">Create</button>
-    <button type="button" (click)="cancelCreateForm()">Cancel</button>
-  </form>
+  <button class="button general_button" (click)="showCreateForm = !showCreateForm">Create User</button>
+  <app-create-user [showCreateForm]="showCreateForm" (createButtonEvent)="createUser($event)"></app-create-user>
   <ul class="UserList">
     <li *ngFor="let user of users">
       <app-user-item
@@ -21,7 +11,7 @@
         [birthday]="user.birthday"
         [city_birth]="user.city_birth"
         [credentials]="user.credentials"
-        (updateUser)="updateUser(user.id, $event)"
+        (updateUser)="updateUser($event)"
         (deleteUser)="deleteUser(user.id)"
       ></app-user-item>
     </li>

@@ -1,12 +1,13 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { UpdateUserInput, User } from 'src/app/graphql/domains/users';
 
 @Component({
   selector: 'app-user-item',
   templateUrl: './user-item.component.html',
   styleUrls: ['./user-item.component.css']
 })
-export class UserItemComponent {
-  @Input() id?: string;
+export class UserItemComponent implements UpdateUserInput {
+  @Input() id: string = '';
   @Input() name?: string;
   @Input() last_name?: string;
   @Input() username?: string;
@@ -14,29 +15,36 @@ export class UserItemComponent {
   @Input() city_birth?: string;
   @Input() credentials?: string[];
 
-  @Output() updateUser: EventEmitter<any> = new EventEmitter();
+  @Output() updateUser: EventEmitter<UpdateUserInput> = new EventEmitter();
   @Output() deleteUser: EventEmitter<string> = new EventEmitter();
 
-  isEditMode = false;
-  updatedUser: any = {};
 
-  doubleClickField(field: keyof UserItemComponent) {
-    this.isEditMode = true;
-    this.updatedUser[field] = this[field];
-  }
+  fields = Object.keys({} as User);
 
-  updateField(field: keyof UserItemComponent) {
-    this[field] = this.updatedUser[field];
-    this.isEditMode = false;
-    this.updatedUser = {};
+
+  updateUserInput: UpdateUserInput = {
+    id: this.id,
+  };
+
+  updateField(field: keyof UpdateUserInput) {
+    this[field] = this.updateUserInput[field] ??  this[field] ?? "";
+    this.updateUserInput = {
+      id: this.id,
+    };
   }
 
   cancelUpdateField() {
-    this.isEditMode = false;
-    this.updatedUser = {};
+    this.updateUserInput = {
+      id: this.id,
+    };
   }
 
   deleteCurrentUser() {
     this.deleteUser.emit(this.id);
+  }
+
+  updateCurrentUser() {
+    this.updateUserInput.id = this.id;
+    this.updateUser.emit(this.updateUserInput);
   }
 }

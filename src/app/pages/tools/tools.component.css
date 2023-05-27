@@ -1,0 +1,11 @@
+#Tools-title{
+    font-size: 12vw;
+    align-self: center;
+}
+
+@media screen and (min-width: 768px) {
+    #Tools-title{
+        font-size: 4.5rem;
+        margin: 0.3rem;
+    }
+}

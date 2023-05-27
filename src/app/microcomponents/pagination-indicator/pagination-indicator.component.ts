@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, Output} from '@angular/core';
 
 
 @Component({
@@ -6,17 +6,24 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
   templateUrl: './pagination-indicator.component.html',
   styleUrls: ['./pagination-indicator.component.css']
 })
-export class PaginationIndicatorComponent {
+export class PaginationIndicatorComponent implements OnChanges  {
   @Input() page = 1;
-  @Input() totalPages = 1;
+  @Input() totalPages = 0;
   @Output() pageChange = new EventEmitter<number>();
 
+
+
+  pageTitle = 'Page';
+  
   get pages(): number[] {
-    return Array.from({ length: this.totalPages }, (_, index) => index + 1);
+    return Array(this.totalPages).fill(0).map((x, i) => i);
   }
 
   onPageChange(page: number) {
     this.pageChange.emit(page);
   }
 
+  ngOnChanges(): void {
+    this.pageTitle = `Page ${this.page+1} of ${this.totalPages}`;
+  }
 }

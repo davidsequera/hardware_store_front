@@ -1,0 +1,25 @@
+form.create-form {
+    font-family: var(--font-family);
+    display: flex;
+    font-size: 1.2rem;
+    flex-direction: column;
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+    box-shadow: 0 2px 5px 1px rgba(64,60,67,.16);
+    border-radius: 2rem ;
+}
+  
+form.create-form input {
+    font-family: inherit;
+    font-size: inherit;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.button_container{
+    display: flex;
+    justify-content: flex-end;
+    justify-self: end;
+    margin: 0.5rem 0;
+    margin-right: 0.1rem;
+}

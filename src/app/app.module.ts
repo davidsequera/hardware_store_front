@@ -39,6 +39,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import { HeroBannerComponent } from './microcomponents/hero-banner/hero-banner.component';
+import { CreateUserComponent } from './microcomponents/create-user/create-user.component';
 
 
 
@@ -75,6 +76,7 @@ import { HeroBannerComponent } from './microcomponents/hero-banner/hero-banner.c
     SearchBarComponent,
     PaginationIndicatorComponent,
     HeroBannerComponent,
+    CreateUserComponent,
   ],
   /**
    * Módulos importados por el módulo de la aplicación

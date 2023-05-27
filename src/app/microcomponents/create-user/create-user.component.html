@@ -1,0 +1,31 @@
+<form [formGroup]="createUserForms" class="create-form" *ngIf="showCreateForm" (ngSubmit)="sendUserInput()">
+    <h3>Create User</h3>
+    <div class="field_input_contaniner">
+        <label class="create-form-label">Name</label>
+        <input formControlName="name" placeholder=" Enter Name" required>
+    </div>
+    <div class="field_input_contaniner">
+        <label class="create-form-label">Last Name </label>
+        <input formControlName="last_name" placeholder=" Enter Last Name" required>
+    </div>
+    <div class="field_input_contaniner">
+        <label class="create-form-label">Username </label>
+        <input formControlName="username" placeholder=" Enter Username" required>
+    </div>
+    <div class="field_input_contaniner">
+        <label class="create-form-label">Birthday </label>
+        <input formControlName="birthday" placeholder=" Enter Birthday" required>        
+    </div>
+    <div class="field_input_contaniner">
+        <label class="create-form-label">Credentials </label>
+        <input formControlName="credentials" placeholder=" Enter Credentials" required>
+    </div>
+    <div class="field_input_contaniner">
+        <label class="create-form-label">City of Birth</label>
+        <input formControlName="city_birth" placeholder=" Enter City of Birth" required>
+    </div>
+    <div class="button_container">
+        <button class="button general_button"  type="submit">Create</button>
+        <button class="button general_button"  type="button" (click)="cancelCreateForm()">Cancel</button>
+    </div>
+</form>

@@ -61,9 +61,11 @@ body {
 
   --Header-size: 57px;
   --Footer-size: 45px;
-  --HeaderFooter: calc(var(--Header-size) + var(--Footer-size));
+  --HeaderFooter: calc(var(--Footer-size));
   --Page-padding: 0 20px var(--Navbar-size) 20px;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
+
+  --font-family: Raleway, Helvetica, sans-serif;
 
 }
 body {
@@ -94,6 +96,7 @@ body {
 .Page-container {
   /* padding: var(--Page-padding); */
   margin: 0;
+  padding-top: var(--Header-size);
   width: auto;
   min-height: calc(100vh - var(--HeaderFooter));
   background-color: var(--color-A3);
@@ -131,6 +134,15 @@ button {
   background: none;
   border: none;
 }
+button.general_button{
+  font-family: Raleway, Helvetica, sans-serif;
+  font-size: 1rem;
+  border-radius: 2rem;
+  padding: 0.5rem 1rem;
+  margin: 0.1rem 0.5rem;
+}
+
+
 .button {
   cursor: pointer;
   background-color: var(--color-B3);
@@ -167,6 +179,11 @@ button {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-B);
 }
+
+.opacity0 {
+  opacity: 0;
+}
+
 /* scrollbar style */
 
 
@@ -194,6 +211,16 @@ button {
     100% {
         background-position: 0% 50%;
     }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+
+  }
 }
 /* animations */
 

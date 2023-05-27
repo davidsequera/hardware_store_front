@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
+import { CreateUserInput, UpdateUserInput } from 'src/app/graphql/domains/users';
 import { GET_ALL_USERS, UPDATE_USER, DELETE_USER, CREATE_USER } from 'src/app/graphql/graphql.users.queries';
 
 @Component({
@@ -8,19 +9,22 @@ import { GET_ALL_USERS, UPDATE_USER, DELETE_USER, CREATE_USER } from 'src/app/gr
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
+
   users?: any[];
   brands?: any[];
   loading = true;
   error: any;
 
   showCreateForm = false; // Flag to control the visibility of the create form
-  newUser: any = {}; // Object to store the data of the new user
+  newUser!: CreateUserInput // Object to store the data of the new user
 
-  constructor(private apollo: Apollo) {}
+  constructor(private apollo: Apollo) { }
 
   ngOnInit(): void {
     this.addUsers();
   }
+
+
 
   addUsers() {
     this.apollo
@@ -43,8 +47,7 @@ export class UserListComponent implements OnInit {
     });
   }
 
-  updateUser(id:any,userInput: any) {
-    userInput.id = id;
+  updateUser(userInput: UpdateUserInput) {
     this.apollo
       .use('users')
       .mutate({
@@ -82,7 +85,9 @@ export class UserListComponent implements OnInit {
       });
   }
 
-  createUser(userInput: any) {
+
+  createUser(userInput: CreateUserInput) {
+
     this.apollo
       .use('users')
       .mutate({
@@ -94,7 +99,6 @@ export class UserListComponent implements OnInit {
           console.log(result);
           // Handle success
           this.showCreateForm = false; // Close the create form after successful creation
-          this.newUser = {}; // Reset the new user object
         },
         error: (error) => {
           console.error('There was an error creating the user', error);
@@ -103,8 +107,4 @@ export class UserListComponent implements OnInit {
       });
   }
 
-  cancelCreateForm() {
-    this.showCreateForm = false; // Close the create form
-    this.newUser = {}; // Reset the new user object
-  }
 }

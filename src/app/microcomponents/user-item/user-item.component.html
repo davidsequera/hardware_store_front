@@ -3,56 +3,46 @@
     id="{{ id }}"
     class="toggle"
     type="checkbox"
-    [disabled]="isEditMode"
   >
   <label
     for="{{ id }}"
     class="lbl-toggle"
     tabindex="0"
-    [hidden]="isEditMode"
   >
     {{ name }}
   </label>
   <div class="collapsible-content">
     <div class="content-inner">
-      <div>
-        <p>{{ name + ' ' + last_name }}</p>
+      <p>{{ name + ' ' + last_name }}</p>
+      <p>{{ 'id: ' + id }}</p>
+      <p>{{ 'credentials: ' + credentials }}</p>
+      <div class="field_input_contaniner">
+        <p class="field_input_text">{{'name: '}}</p>
+        <input class="field_input" [(ngModel)]="updateUserInput.name" placeholder="{{name}}">
       </div>
-      <div>
-        <p>{{ 'id: ' + id }}</p>
+      <div class="field_input_contaniner">
+        <p class="field_input_text">{{'last_name: '}}</p>
+        <input [(ngModel)]="updateUserInput.last_name" placeholder="{{last_name}}">
       </div>
-      <div>
-        <p>{{ 'name: ' + name }}</p>
+      <div class="field_input_contaniner">
+        <p class="field_input_text">{{'username: '}}</p>
+        <input [(ngModel)]="updateUserInput.username" placeholder="{{username}}">
       </div>
-      <div>
-        <p>{{ 'last_name: ' + last_name }}</p>
+      <div class="field_input_contaniner">
+        <p class="field_input_text">{{'birthday: '}}</p>
+        <input [(ngModel)]="updateUserInput.birthday" placeholder="{{birthday}}">
       </div>
-      <div>
-        <p>{{ 'username: ' + username }}</p>
+      <div class="field_input_contaniner">
+        <p class="field_input_text">{{'city_birth: '}}</p>
+        <input [(ngModel)]="updateUserInput.city_birth" placeholder="{{city_birth}}">
       </div>
-      <div>
-        <p>{{ 'birthday: ' + birthday }}</p>
-      </div>
-      <div>
-        <p>{{ 'city_birth: ' + city_birth }}</p>
-      </div>
-      <div>
-        <p>{{ 'credentials: ' + credentials }}</p>
-      </div>
-      <div *ngIf="isEditMode">
-        <input [(ngModel)]="updatedUser.name" (dblclick)="updateField('name')" placeholder="Enter name">
-        <input [(ngModel)]="updatedUser.last_name" (dblclick)="updateField('last_name')" placeholder="Enter last name">
-        <input [(ngModel)]="updatedUser.username" (dblclick)="updateField('username')" placeholder="Enter username">
-        <input [(ngModel)]="updatedUser.birthday" (dblclick)="updateField('birthday')" placeholder="Enter birthday">
-        <input [(ngModel)]="updatedUser.city_birth" (dblclick)="updateField('city_birth')" placeholder="Enter city of birth">
-        <input [(ngModel)]="updatedUser.credentials" (dblclick)="updateField('credentials')" placeholder="Enter credentials">
-        <button (click)="cancelUpdateField()">Cancel</button>
-        <button (click)="updateUser.emit(updatedUser)">Update</button>
-      </div>
-      <div *ngIf="!isEditMode">
-        <button (click)="doubleClickField('name')">Edit</button>
-        <button (click)="deleteCurrentUser()">Delete</button>
-      </div>
+      <section  class="button_section">
+        <div  class="button_container">
+          <button class="button general_button" (click)="cancelUpdateField()">Cancel</button>
+          <button class="button general_button" (click)="updateCurrentUser()">Update</button>
+          <button class="button general_button" (dblclick)="deleteCurrentUser()">Delete</button>
+        </div>
+      </section>
     </div>
   </div>
 </div>

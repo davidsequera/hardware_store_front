@@ -97,5 +97,10 @@ interface ToolPage {
 }
 
 
-export {Tool, City, Brand, ToolPageInput, CreateToolInput, UpdateToolInput, CreateBrandInput, UpdateBrandInput, CreateCityInput, UpdateCityInput, ToolPage}
+interface FilterInput{
+    field: string
+    values: string[]
+}
+
+export {Tool, City, Brand, ToolPageInput, CreateToolInput, UpdateToolInput, CreateBrandInput, UpdateBrandInput, CreateCityInput, UpdateCityInput, ToolPage, FilterInput}
     

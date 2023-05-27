@@ -11,10 +11,17 @@ export class ToolFilterComponent implements OnInit {
   @Input() filterOn: boolean = false;
   // TODO: MAKE THING RIGTH
   // @Output() brandsChecked: {[key: string]: any} = {};
+
+  @Output() filterChange = new EventEmitter<void>();
+
   userContext: UserContextService;
 
   constructor(userContext: UserContextService) { 
     this.userContext = userContext;
+  }
+
+  onFilterChange() {
+    this.filterChange.emit();
   }
 
   toogleFilter() {

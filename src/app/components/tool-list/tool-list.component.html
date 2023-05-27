@@ -1,11 +1,17 @@
 <div class="tool-list">
   <app-search-bar
-    *ngIf="tools && brands"
+    *ngIf="toolPage && brands"
     (searchText)="onSeachbarChange($event)"
   ></app-search-bar>
   <div class="filterButton-container">
+    <span class="filter-button opacity0"></span>
+    <ng-container *ngIf="loading">
+      <div class="ToolsLoading">
+        <app-micro-loading></app-micro-loading>
+      </div>
+    </ng-container>
     <mat-icon
-      *ngIf="tools && brands"
+      *ngIf="toolPage && brands"
       role="button"
       class="filter-button"
       id="filterButton"
@@ -15,30 +21,34 @@
     >
       filter_list
     </mat-icon>
+    <span class="filter-button opacity0" *ngIf="!toolPage ||  !brands"></span>
   </div>
   <div class="ToolsLayout">
-    <ng-container *ngIf="loading">
-      <div class="ToolsLoading">
-        <app-micro-loading></app-micro-loading>
-      </div>
-    </ng-container>
     <div *ngIf="error">Error, please try again</div>
-    <ng-container *ngIf="tools && !error">
+    <ng-container *ngIf="toolPage && !error">
       <ul class="ToolList">
-        <li *ngFor="let tool of tools">
+        <li *ngFor="let tool of toolPage.tools">
           <app-tool-item
-            [ngClass]="{ hidden: !isToolfromBrand(tool) }"
             [name]="tool.name"
             [description]="tool.description"
           ></app-tool-item>
         </li>
       </ul>
-      <app-tool-filter [filterOn]="filterOn" [brands]="brands"></app-tool-filter>
+      <ng-container *ngIf="toolPage.length === 0">
+        <div class="no-tools">
+          <mat-icon class="no-tools-icon">sentiment_dissatisfied</mat-icon>
+          <h2>No tools found</h2>
+        </div>
+        <!-- icon -->
+      </ng-container>
+      <app-tool-filter (filterChange)="onFilterChange()" [filterOn]="filterOn" [brands]="brands"></app-tool-filter>
     </ng-container>
   </div>
-  <app-pagination-indicator
-    [page]="currentPage"
-    [totalPages]="totalPages"
+  <ng-container *ngIf="toolPage && !error">
+    <app-pagination-indicator
+    [page]="toolPageInput.page"
+    [totalPages]="toolPage.pages"
     (pageChange)="onPageChange($event)"
-  ></app-pagination-indicator>
-</div>
+    ></app-pagination-indicator>
+  </ng-container>
+  </div>

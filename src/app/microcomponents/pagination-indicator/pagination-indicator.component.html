@@ -1,10 +1,9 @@
 <div class="pagination-indicator">
-    <button mat-icon-button [disabled]="page === 1" (click)="onPageChange(page - 1)"><mat-icon>chevron_left</mat-icon></button>
-    <button mat-button [matMenuTriggerFor]="menu">Page</button>
+    <button mat-icon-button [disabled]="page <= 0" (click)="onPageChange(page - 1)"><mat-icon>chevron_left</mat-icon></button>
+    <button mat-button [matMenuTriggerFor]="menu">{{pageTitle}}</button>
     <mat-menu #menu="matMenu">
         <div *ngFor="let page of pages">
-            <!-- <p>{{page}}</p> -->
-            <button mat-menu-item>{{page}}</button>
+            <button mat-menu-item  (click)="onPageChange(page)" >{{page+1}}</button>
         </div>
     </mat-menu>
     <button mat-icon-button [disabled]="page === pages.at(-1)" (click)="onPageChange(page + 1)"><mat-icon>chevron_right</mat-icon></button>

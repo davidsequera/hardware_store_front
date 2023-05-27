@@ -5,7 +5,7 @@
     background-color: var(--color-A5);
     border-radius: 3rem;
     box-shadow: 0 2px 5px 1px rgba(64,60,67,.16);
-    margin: 1rem 0;
+    margin: 1rem 3vw;
     transition: border 5s ease;
 }
 
@@ -21,5 +21,11 @@
     background-color: transparent;
     color: var(--color-A4);
     font-size: 1rem;
+}
+
+@media screen and (min-width: 768px){
+    .search-bar{
+        margin: 0 4vw;
+    }
 }
 

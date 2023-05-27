@@ -62,6 +62,31 @@ const GET_TOOL_BY_NAME = gql`
     }
   }
 `
+
+const GET_TOOL_BY_FILTER = gql`
+  query getToolsByFilter($toolPageInput: toolPageInput!, $filters: [filterInput!]){
+      getToolsByFilter(input: $toolPageInput, filters: $filters){
+          total
+          length
+          pages
+          page
+          tools{
+              id
+              name
+              brand{
+                  id
+                  name
+              }
+          }
+      }
+      getBrands{
+          id
+          name
+      }
+  }
+`
+
+
 const GET_BRANDS = gql`
   query {
     getBrands {
@@ -121,4 +146,4 @@ const DELETE_TOOL = gql`
   }
   `
 
-export { GET_ALL_TOOLS, GET_TOOLS,GET_TOOL_BY_NAME, GET_TOOL_BY_ID, GET_BRANDS, GET_CITITES, GET_CITY_BY_ID, CREATE_TOOL, UPDATE_TOOL, DELETE_TOOL}
+export { GET_ALL_TOOLS, GET_TOOLS,GET_TOOL_BY_NAME, GET_TOOL_BY_ID, GET_BRANDS, GET_CITITES, GET_CITY_BY_ID, CREATE_TOOL, UPDATE_TOOL, DELETE_TOOL, GET_TOOL_BY_FILTER}

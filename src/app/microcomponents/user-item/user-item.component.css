@@ -1,12 +1,11 @@
-.UserItem {
-  /* height: 7rem; */
-  border-radius: 2rem;
+.UserItem{
+  /* height:7rem; */
+  border-radius: 2rem ;
   font-family: Raleway, Helvetica, sans-serif;
-  box-shadow: 0 2px 5px 1px rgba(64, 60, 67, 0.16);
+  box-shadow: 0 2px 5px 1px rgba(64,60,67,.16);
   margin: 0.5rem;
-  display: flex; /* Add display flex */
-  align-items: center; /* Align items vertically */
 }
+
 
 input[type='checkbox'] {
   display: none;
@@ -33,9 +32,9 @@ input[type='checkbox'] {
   border-bottom: 5px solid transparent;
   border-left: 5px solid currentColor;
   vertical-align: middle;
-  margin-left: 1rem; /* Adjust the margin for alignment */
+  margin-left: 7rem;
   transform: translateY(-2px);
-  transition: transform 0.2s ease-out;
+  transition: transform .2s ease-out;
 }
 
 .toggle:checked + .lbl-toggle::after {
@@ -45,7 +44,7 @@ input[type='checkbox'] {
 .collapsible-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.25s ease-in-out;
+  transition: max-height .25s ease-in-out;
 }
 
 .toggle:checked + .lbl-toggle + .collapsible-content {
@@ -60,30 +59,55 @@ input[type='checkbox'] {
 .collapsible-content .content-inner {
   border-bottom-left-radius: 7px;
   border-bottom-right-radius: 7px;
-  padding: 0.5rem 1rem;
-}
-
-.UserItem button {
-  font-size: 2rem;
-  padding: 1rem 2rem;
-  background-color: orange;
-  color: white;
-  border: none;
-  border-radius: 1rem;
-  cursor: pointer;
-  transition: background-color 0.25s ease-out;
+  padding: .5rem 1rem;
 }
 
 .UserItem button:hover {
-  background-color: darkorange;
+  background-color: var(--color-B);
 }
 
-.create-form input {
-  font-size: 2rem;
-  padding: 1rem;
-  margin-right: 1rem; /* Add margin to create space between inputs */
+.field_input_contaniner {
+  display: flex;
+  font-size: 1rem;
+  margin: 0;
+  width: 95%;
+  border-radius: 3.25rem;
+  padding: 0 0.75rem;
+}
+.field_input_contaniner:hover{
+  background: var(--color-A) 0% 0% no-repeat padding-box;
+
+}
+p{
+  margin: 0.5rem 0;
+  margin-right: 0.1rem;
 }
 
-.create-form button {
-  margin-top: 1rem; /* Add margin to separate buttons from inputs */
+input {
+  display: flex;
+  font-family: inherit;
+  font-size: 1rem;
+  border: none;
+  margin: 0;
+  /* overflow: visible; */
+  width: 100%;
+  /* height: calc(1.5em + 0.75rem + 2px); */
+  color: var(--color-B);
+}
+
+input::placeholder{
+  color: initial;
+}
+
+/* input:focus {
+  outline: none;
+  border: 1px solid var(--color-A2);
+  box-shadow: 0 0 10px #719ECE;
+} */
+
+.button_container{
+  display: flex;
+  justify-content: flex-end;
+  margin: 0.5rem 0;
+  margin-right: 0.1rem;
 }

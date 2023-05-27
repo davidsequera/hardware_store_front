@@ -1,31 +1,31 @@
 /*header*/
 .header{
   position: fixed;
-	--header-title: 80%;
-	min-height: var(--Header-size);
-	width: 100vw;
-	display: flex;
-	flex-direction: row-reverse;
-	justify-content: center;
-	background-color:var(--color-C3);
-	color: var(--color-A);
-	transition: 500ms background-color cubic-bezier(0.6, -0.28, 0.735, 0.045);
-	z-index: 1000;
+  --header-title: 80%;
+  min-height: var(--Header-size);
+  width: 100vw;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  background-color:var(--color-C3);
+  color: var(--color-A);
+  transition: 500ms background-color cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  z-index: 1000;
 }
 /* .header:hover{
 	background-color: var(--color-A);
 } */
 .header-logo{
 	width: auto;
-  display: flex;
-  justify-content: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 	transition: 500ms width cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
 
 .header-logo img{
   filter: invert();
-  width: 10vh;
-  height: auto;
+  width: 10rem;
 }
 
 .header-text{
